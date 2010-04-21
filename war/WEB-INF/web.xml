@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns="http://java.sun.com/xml/ns/javaee"
+xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+	<servlet>
+		<servlet-name>Home</servlet-name>
+		<servlet-class>bugkillr.HomeServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Home</servlet-name>
+		<url-pattern>/home</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>AddUser</servlet-name>
+		<servlet-class>bugkillr.AddUserServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddUser</servlet-name>
+		<url-pattern>/adduser</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>ViewTeams</servlet-name>
+		<servlet-class>bugkillr.ViewTeamsServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ViewTeams</servlet-name>
+		<url-pattern>/viewteams</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>ChangeTeam</servlet-name>
+		<servlet-class>bugkillr.DBChangeTeamServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ChangeTeam</servlet-name>
+		<url-pattern>/changeteam</url-pattern>
+	</servlet-mapping>
+	<welcome-file-list>
+		<welcome-file>home</welcome-file>
+	</welcome-file-list>
+</web-app>
