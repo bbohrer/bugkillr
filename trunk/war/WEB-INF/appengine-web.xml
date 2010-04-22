@@ -8,4 +8,8 @@
 		<property name="java.util.logging.config.file" value="WEB-INF/logging.properties"/>
 	</system-properties>
 	
+	<!-- Adding static folder -->
+	<static-files>
+		<include path="/static/*" />
+	</static-files>
 </appengine-web-app>
