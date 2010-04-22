@@ -7,6 +7,15 @@ import html.HTMLWriter;
 import redirects.Redirector;
 
 @SuppressWarnings("serial")
+/**
+ * The beginning of the problem submission process. This page
+ * creates an HTML form that the player uses to submit their problem.
+ * From here, the player's code is sent to another page, either a
+ * servlet hosted somewhere that it can run processes, or a CGI program.
+ * From there, the problem is checked for correctness, and the user
+ * is redirected to a page that updates the user's list of solved
+ * problems upon success. If the submission fails the test, the CGI program/servlet produces an error message.
+ */
 public class SubmissionFormServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		HTMLWriter hw = new HTMLWriter(req, resp);
