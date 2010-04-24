@@ -81,14 +81,16 @@ public class HTMLWriter {
 	 */
 	public void writeHeader() throws IOException
 	{
+		//Unimplemented pages are commented out.
 		UserService us = UserServiceFactory.getUserService();
 		Redirector redir = new Redirector(req,resp);
 		writeLink("home", "Home");
-		writeLink("problems", "Unsolved Problems");
-		writeLink("solved", "Solved Problems");
-		writeLink("tools", "Tools");
-		writeLink("highscores", "Team Rankings");
+		//writeLink("problems", "Unsolved Problems");
+		//writeLink("solved", "Solved Problems");
+		//writeLink("tools", "Tools");
+		//writeLink("highscores", "Team Rankings");
 		writeLink("viewteams", "Change Teams");
+		writeLink("addproblemform","Submit New Problem");
 		//Use Google Apps API to generate login/logout links.
 		if(redir.isLoggedIn())
 		{
