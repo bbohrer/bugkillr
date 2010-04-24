@@ -28,9 +28,11 @@ public class Team{
 	public String getName(){
 		return name;
 	}
+	
 	public Key getKey(){
 		return key;
 	}
+	
 	public Team(String Name, Key Owner){
 		name = Name;
 		owner = Owner;

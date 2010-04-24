@@ -14,16 +14,6 @@ import bugkillr.PMF;
  * */
 @SuppressWarnings("serial")
 public class DBAddProblemServlet extends HttpServlet {
-	/**					"<p>Name of the problem as it will appear in the problem list:<br/>\n" +
-					"<input type=\"text\" name=\"problemName\"/></p>\n" +
-					"<p>Complete URL for the problem's help material (including http://)<br/>\n" +
-					"<input type=\"text\" name=\"helpURL\"/></p>\n" +
-					"<p>Complete URL for the problem's description (including http://)<br/>\n" +
-					"<input type=\"text\" name=\"descriptionURL\"/></p>\n" +
-					"<p>Complete URL for the problem-solving program (including http://)<br/>\n" +
-					"<input type=\"text\" name=\"solverURL\"></textarea></p>\n" +
-					"<input type=\"submit\" value=\"Submit\"/>"+*/
-	
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		HTMLWriter hw = new HTMLWriter(req, resp);
