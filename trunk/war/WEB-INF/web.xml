@@ -68,6 +68,22 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>AddProblemDB</servlet-name>
 		<url-pattern>/addproblemDB</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>AddTeamForm</servlet-name>
+		<servlet-class>bugkillr.TeamFormServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddTeamForm</servlet-name>
+		<url-pattern>/addteamform</url-pattern>
+	</servlet-mapping>
+		<servlet>
+		<servlet-name>AddTeamDB</servlet-name>
+		<servlet-class>bugkillr.DBAddTeamServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddTeamDB</servlet-name>
+		<url-pattern>/addteamDB</url-pattern>
+	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>home</welcome-file>
 	</welcome-file-list>

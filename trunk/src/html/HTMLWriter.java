@@ -89,6 +89,7 @@ public class HTMLWriter {
 		//writeLink("solved", "Solved Problems");
 		//writeLink("tools", "Tools");
 		//writeLink("highscores", "Team Rankings");
+		writeLink("addteamform", "Create New Team");
 		writeLink("viewteams", "Change Teams");
 		writeLink("addproblemform","Submit New Problem");
 		//Use Google Apps API to generate login/logout links.
