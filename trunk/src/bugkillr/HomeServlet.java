@@ -1,5 +1,6 @@
 package bugkillr;
 import java.io.IOException;
+import java.io.InputStream;
 
 import javax.servlet.http.*;
 import html.HTMLWriter;

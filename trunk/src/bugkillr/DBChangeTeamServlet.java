@@ -63,7 +63,7 @@ public class DBChangeTeamServlet extends HttpServlet {
 				//Exactly one team with the given name exists. Join it.
 				else{
 					//Look for the user in the datastore
-					//TODO make this less ugly
+					//TODO Fix this. Currently the user's team does not change.
 					User theUser = redir.getUserFromDatastore();
 					theUser.setTeam(results.get(0).getName());
 					if(redir.getTeamFromDatastore() == null)resp.getWriter().println("Error: New team not changed in database");
