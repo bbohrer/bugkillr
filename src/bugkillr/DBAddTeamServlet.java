@@ -42,14 +42,17 @@ public class DBAddTeamServlet extends HttpServlet {
 				Team newTeam = new Team(req.getParameter("teamName"), redir.getUserFromDatastore().getKey());
 				pm.makePersistent(newTeam);
 				
-				// TODO Add code to put the user on the new team if they checked the "Join team" box on the form. 
+				if(req.getParameter("joinTeam") != null)
+				{
+					User curUser = redir.getUserFromDatastorePM(pm);
+					curUser.setTeam(teamName);
+					pm.makePersistent(curUser);
+				}
+					 
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				resp.getWriter().println(e);
 			}
 		}
-
-		pm.close();
 
 		hw.writeHeader();
 		if(!existingTeams.isEmpty())
@@ -65,5 +68,6 @@ public class DBAddTeamServlet extends HttpServlet {
 					"Join Team: " + req.getParameter("joinTeam"));
 		}
 		hw.writeEpilog(); 
+		pm.close();
 	}
 }

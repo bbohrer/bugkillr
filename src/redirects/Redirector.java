@@ -91,6 +91,24 @@ public class Redirector {
 		if(userResults.size() > 1) throw new Exception("Multiple users exist for email address: " + req.getUserPrincipal().getName());
 		return userResults.get(0);
 	}
+	
+	/**
+	 * @return User's record in datastore if it exists, null otherwise
+	 * @throws Exception If there are multiple User objects for the current user's email address
+	 */
+	@SuppressWarnings("unchecked")
+	public User getUserFromDatastorePM(PersistenceManager pm) throws Exception
+	{
+		//TODO Find a better way to handle the user not being logged in!.
+		if(req.getUserPrincipal() == null)return null;
+		Query getUser = pm.newQuery("select from " + User.class.getName() + " where emailAddr == email_addr");
+		getUser.declareParameters("String email_addr");
+		List<User> userResults = (List<User>)getUser.execute(req.getUserPrincipal().getName());
+		if(userResults.isEmpty()) return null;
+		if(userResults.size() > 1) throw new Exception("Multiple users exist for email address: " + req.getUserPrincipal().getName());
+		return userResults.get(0);
+	}
+	
 	/**
 	 * @return User's team if the user is on a team, null otherwise
 	 * @throws Exception 
@@ -99,18 +117,20 @@ public class Redirector {
 	public Team getTeamFromDatastore() throws Exception
 	{
 
-		PersistenceManager pm = PMF.get().getPersistenceManager();
 		User curUser = getUserFromDatastore();
-		if(curUser == null) throw new Exception("NO USER!");
+		if(curUser == null) throw new Exception("No use");
+		PersistenceManager pm = PMF.get().getPersistenceManager();
 		Query getTeam = pm.newQuery("select from "+Team.class.getName() + " where name == team_name");
 		getTeam.declareParameters("String team_name");
 		List<Team> results = (List<Team>)getTeam.execute(curUser.getTeamId());
+		//Note: results.size() must be called while the datastore is open.
+		int numResults = results.size();
 		pm.close();
 		//If no results were returned, it's a non-existent team
-		if(results.isEmpty())
+		if(numResults == 0)
 			return null;
 		//Multiple results mean there were multiple teams with a given name. This is bad.
-		else if(results.size() > 1)
+		else if(numResults > 1)
 		{
 			throw new Exception("User has more than one team: " + curUser.getAccountId());
 		}

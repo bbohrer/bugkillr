@@ -12,8 +12,9 @@ import javax.jdo.Query;
 
 import bugkillr.PMF;
 import bugkillr.Team;
-
 import redirects.Redirector;
+import html.HTMLWriter;
+
 import java.util.List;
 
 
@@ -21,9 +22,14 @@ import java.util.List;
 public class DBChangeTeamServlet extends HttpServlet {
 	@SuppressWarnings("unchecked")
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-		resp.setContentType("text/plain");
+		resp.setContentType("text/html");
 		String teamName = req.getParameter("teamname");
 		Redirector redir = new Redirector(req,resp);
+		HTMLWriter hw = new HTMLWriter(req,resp);
+		
+		hw.writeProlog("Bugkiller - Change Teams");
+		hw.writeHeader();
+		
 		//Redirect if the user is logged in or not in the database.
 		redir.loginRedirect();
 		try {
@@ -33,20 +39,23 @@ public class DBChangeTeamServlet extends HttpServlet {
 			e1.printStackTrace();
 		}
 		
+		//Make sure the user entered a team name
 		if(teamName == null)
 		{
 			resp.getWriter().println("Error: You did not enter a team name. Please go back and enter a team name.");
 		}
+		
+		//Add them to the specified team.
 		else
 		{
 			PersistenceManager pm = PMF.get().getPersistenceManager();
 			try
 			{
-				//:TODO: Make this safe, if it isn't
 				//Look in the datastore for a team with the given name
 				Query getTeam = pm.newQuery("select from "+Team.class.getName() + " where name == team_name");
 				getTeam.declareParameters("String team_name");
 				List<Team> results = (List<Team>)getTeam.execute(teamName);
+				
 				//If no results were returned, it's a non-existent team
 				if(results.isEmpty())
 				{
@@ -63,20 +72,22 @@ public class DBChangeTeamServlet extends HttpServlet {
 				//Exactly one team with the given name exists. Join it.
 				else{
 					//Look for the user in the datastore
-					//TODO Fix this. Currently the user's team does not change.
-					User theUser = redir.getUserFromDatastore();
+					User theUser = redir.getUserFromDatastorePM(pm);
 					theUser.setTeam(results.get(0).getName());
-					if(redir.getTeamFromDatastore() == null)resp.getWriter().println("Error: New team not changed in database");
-					else
-						resp.getWriter().println("Team successfully updated to " + results.get(0).getName() + ".");
+					pm.makePersistent(theUser);
 				}
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
+			
+			//If getUserFromDatastorePM function finds multiple users for your email address, warn the user.
+			catch (Exception e) {
+				resp.getWriter().println(e);
+			}
+			//Always close the PersistenceManager, even in the event of an error.
 			finally{	
 				pm.close();
 			}
+			resp.getWriter().println("Team has been updated.");
 		}
+		hw.writeEpilog();
 	}
 }
