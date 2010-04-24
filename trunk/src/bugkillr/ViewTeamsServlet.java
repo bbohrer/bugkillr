@@ -19,6 +19,7 @@ public class ViewTeamsServlet extends HttpServlet {
     @SuppressWarnings("unchecked")
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
+		response.setContentType("text/html");
 
 		PersistenceManager pm = PMF.get().getPersistenceManager();
         HTMLWriter hw = new HTMLWriter(request, response);
@@ -29,11 +30,10 @@ public class ViewTeamsServlet extends HttpServlet {
         try {
 			redir.userRedirect();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			response.getWriter().println(e);
 		}
         
-        hw.writeProlog("Bugkillr - View Teams");
+        hw.writeProlog("Bugkiller - View Teams");
         hw.writeHeader();
         try{
         //If the user has a current team, tell them what it is
@@ -47,8 +47,7 @@ public class ViewTeamsServlet extends HttpServlet {
 				response.getWriter().println("<p> Your current team is \"" + curTeam.getName() + "\".");
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			response.getWriter().println(e);
 		}
         
         //Show the available teams
