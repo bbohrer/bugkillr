@@ -26,14 +26,15 @@ public class DBAddProblemServlet extends HttpServlet {
 		Problem problem = new Problem(req.getParameter("problemName"),req.getParameter("descriptionURL"),
 				req.getParameter("helpURL"), req.getParameter("solverURL"));
 		pm.makePersistent(problem);
-		pm.close();
 		hw.writeHeader();
 		resp.getWriter().println("<h1>Add Problem to Database</h1>" +
 				"Added problem with the following parameters:<br/>\n" +
 				"Problem Name: " + req.getParameter("problemName") +"<br/>\n" +
 				"Description URL: " + req.getParameter("descriptionURL") + "<br/>\n" +
 				"Help URL: " + req.getParameter("helpURL") + "<br/>\n" +
-				"Solver URL: " + req.getParameter("solverURL"));
+				"Solver URL: " + req.getParameter("solverURL") + "<br/>\n" +
+			 	"The PID assigned to it is " + problem.getKey());
 		hw.writeEpilog(); 
+		pm.close();
 	}
 }

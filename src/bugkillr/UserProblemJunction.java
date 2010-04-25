@@ -16,20 +16,19 @@ public class UserProblemJunction{
 	private Key userId;
 	
 	@Persistent
-	private Key problemId;
-	
+	private long problemId;
 	
 	
 	public Key getKey(){
 		return key;
 	}
-	public Key getProblemId(){
+	public long getProblemId(){
 		return problemId;
 	}
 	public Key getUserId(){
 		return userId;
 	}
-	public UserProblemJunction(Key UserId, Key ProblemId){
+	public UserProblemJunction(Key UserId, long ProblemId){
 		userId = UserId;
 		problemId = ProblemId;
 	}
