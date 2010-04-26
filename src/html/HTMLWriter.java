@@ -85,7 +85,7 @@ public class HTMLWriter {
 		UserService us = UserServiceFactory.getUserService();
 		Redirector redir = new Redirector(req,resp);
 		writeLink("home", "Home");
-		//writeLink("problems", "Unsolved Problems");
+		writeLink("problems", "Unsolved Problems");
 		//writeLink("solved", "Solved Problems");
 		//writeLink("tools", "Tools");
 		//writeLink("highscores", "Team Rankings");
