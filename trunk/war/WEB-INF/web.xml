@@ -10,7 +10,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>ViewSubmission</servlet-name>
-		<url-pattern>viewsubmission</url-pattern>
+		<url-pattern>/viewsubmission</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>SubmissionForm</servlet-name>
