@@ -38,6 +38,8 @@ public class ProblemFormServlet extends HttpServlet {
 					"<input type=\"text\" name=\"descriptionURL\"/></p>\n" +
 					"<p>Complete URL for the problem-solving program (including http://)<br/>\n" +
 					"<input type=\"text\" name=\"solverURL\"></textarea></p>\n" +
+					"<p>Minimum score required to play this problem</p>\n"+
+					"<input type=\"text\" name=\"minscore\"></textarea></p>\n"+
 					"<input type=\"submit\" value=\"Submit\"/>"+
 				"</form>");
 		hw.writeEpilog();

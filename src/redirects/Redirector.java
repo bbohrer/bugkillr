@@ -136,4 +136,30 @@ public class Redirector {
 		}
 		else return results.get(0);
 	}
+	
+	/**
+	 * @return User's team if the user is on a team, null otherwise
+	 * @throws Exception 
+	 */
+	@SuppressWarnings("unchecked")
+	public Team getTeamFromDatastorePM(PersistenceManager pm) throws Exception
+	{
+
+		User curUser = getUserFromDatastore();
+		if(curUser == null) throw new Exception("No use");
+		Query getTeam = pm.newQuery("select from "+Team.class.getName() + " where name == team_name");
+		getTeam.declareParameters("String team_name");
+		List<Team> results = (List<Team>)getTeam.execute(curUser.getTeamId());
+		//Note: results.size() must be called while the datastore is open.
+		int numResults = results.size();
+		//If no results were returned, it's a non-existent team
+		if(numResults == 0)
+			return null;
+		//Multiple results mean there were multiple teams with a given name. This is bad.
+		else if(numResults > 1)
+		{
+			throw new Exception("User has more than one team: " + curUser.getAccountId());
+		}
+		else return results.get(0);
+	}
 }
