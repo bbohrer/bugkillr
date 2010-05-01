@@ -8,6 +8,7 @@ import javax.jdo.annotations.PrimaryKey;
 
 @PersistenceCapable
 public class UserProblemJunction{
+	private static final long serialVersionUID = 1L;
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
 	private Key key;

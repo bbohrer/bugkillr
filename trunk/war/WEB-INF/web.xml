@@ -85,12 +85,44 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<url-pattern>/addteamDB</url-pattern>
 	</servlet-mapping>
 	<servlet>
-	<servlet-name>DBProcessSubmission</servlet-name>
-	<servlet-class>bugkillr.DBProcessSubmissionServlet</servlet-class>
+		<servlet-name>DBProcessSubmission</servlet-name>
+		<servlet-class>bugkillr.DBProcessSubmissionServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-	<servlet-name>DBProcessSubmission</servlet-name>
-	<url-pattern>/DBprocess_submission</url-pattern>
+		<servlet-name>DBProcessSubmission</servlet-name>
+		<url-pattern>/DBprocess_submission</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>ViewUnsolvedProblems</servlet-name>
+		<servlet-class>bugkillr.ViewUnsolvedProblemsServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ViewUnsolvedProblems</servlet-name>
+		<url-pattern>/problems</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>ViewProblem</servlet-name>
+		<servlet-class>bugkillr.ViewProblemServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ViewProblem</servlet-name>
+		<url-pattern>/viewproblem</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>ViewTeamStatistics</servlet-name>
+		<servlet-class>bugkillr.ViewTeamStatisticsServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ViewTeamStatistics</servlet-name>
+		<url-pattern>/highscores</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>ViewTeamStatisticsDetail</servlet-name>
+		<servlet-class>bugkillr.ViewTeamStatisticsDetailServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ViewTeamStatisticsDetail</servlet-name>
+		<url-pattern>/viewteamdetail</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>home</welcome-file>

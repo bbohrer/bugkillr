@@ -7,6 +7,7 @@ import javax.servlet.http.*;
 import html.HTMLWriter;
 import redirects.Redirector;
 import bugkillr.PMF;
+import bugkillr.Problem;
 
 /**
  * @author Randy Bohrer
@@ -23,8 +24,9 @@ public class DBAddProblemServlet extends HttpServlet {
 		redir.loginRedirect();
 		hw.writeProlog("Bugkiller - Add Problem to Database");
 		//(String Name, String DescriptionURL, String HelpURL, String SolverURL)
+		int minscore = Integer.parseInt(req.getParameter("minscore"));
 		Problem problem = new Problem(req.getParameter("problemName"),req.getParameter("descriptionURL"),
-				req.getParameter("helpURL"), req.getParameter("solverURL"));
+				req.getParameter("helpURL"), req.getParameter("solverURL"), minscore);
 		pm.makePersistent(problem);
 		hw.writeHeader();
 		resp.getWriter().println("<h1>Add Problem to Database</h1>" +
@@ -33,6 +35,7 @@ public class DBAddProblemServlet extends HttpServlet {
 				"Description URL: " + req.getParameter("descriptionURL") + "<br/>\n" +
 				"Help URL: " + req.getParameter("helpURL") + "<br/>\n" +
 				"Solver URL: " + req.getParameter("solverURL") + "<br/>\n" +
+				"Minimum score: " + minscore + "<br/>\n"+
 			 	"The PID assigned to it is " + problem.getKey());
 		hw.writeEpilog(); 
 		pm.close();

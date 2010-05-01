@@ -29,6 +29,7 @@ public class DBProcessSubmissionServlet extends HttpServlet {
 	@SuppressWarnings("unchecked")
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
+		
 		HTMLWriter hw = new HTMLWriter(req, resp);
 		Redirector redir = new Redirector(req,resp);
 		redir.loginRedirect();
@@ -71,7 +72,7 @@ public class DBProcessSubmissionServlet extends HttpServlet {
 			getSolvedProblem.declareParameters("String curUserId, String curProblemID");
 			User curUser = null;
 			try {
-				curUser = redir.getUserFromDatastore();
+				curUser = redir.getUserFromDatastorePM(pm);
 			} catch (Exception e1) {
 				resp.getWriter().println(e1);
 			}
@@ -104,7 +105,11 @@ public class DBProcessSubmissionServlet extends HttpServlet {
 						{
 							resp.getWriter().println("Congratulations. Your code passed.");
 							UserProblemJunction prob = new UserProblemJunction(curUser.getKey(), new Long(req.getParameter("pid")));
+							curUser.setScore(curUser.getScore()+1);
+							Team curTeam = redir.getTeamFromDatastorePM(pm);
+							curTeam.setScore(curTeam.getScore()+1);
 							pm.makePersistent(prob);
+							resp.getWriter().println("<br/> Updating score to " + (curUser.getScore()));
 						}
 						//User's code failed
 						else
@@ -131,8 +136,14 @@ public class DBProcessSubmissionServlet extends HttpServlet {
 				} catch (Exception e) {
 					resp.getWriter().println("Error: "+e);
 				}
+				finally
+				{
+					if(!pm.isClosed())
+						pm.close();	
+				}
 			}
 		}
+
 		hw.writeEpilog();
 	}
 }

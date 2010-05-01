@@ -35,6 +35,8 @@ public class Problem{
 	@Persistent
 	private String solverURL;
 	
+	/*Score required before problem can be played*/
+	private int minscore;
 	public long getKey(){
 		return key;
 	}
@@ -51,9 +53,14 @@ public class Problem{
 	public String getName(){
 		return name;
 	}
-	public Problem(String Name, String DescriptionURL, String HelpURL, String SolverURL){
+	public int getMinscore(){
+		return minscore;
+	}
+	public Problem(String Name, String DescriptionURL, String HelpURL, String SolverURL, int Minscore){
 		name = Name;
 		descriptionURL = DescriptionURL;
+		helpURL = HelpURL;
 		solverURL = SolverURL;
+		minscore = Minscore;
 	}
 }

@@ -9,6 +9,7 @@ import javax.jdo.annotations.PrimaryKey;
 
 @PersistenceCapable
 public class Team{
+	private static final long serialVersionUID = 1L;
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
 	private Key key;
@@ -21,6 +22,19 @@ public class Team{
 	@Persistent
 	private Key owner;
 	
+	//Total score of all users on the team.
+	//This could be computed from the scores of
+	//the users, but this way makes some of the queries much simpler.
+	@Persistent
+	private int score;
+	public int getScore()
+	{
+		return score;
+	}
+	public void setScore(int Score)
+	{
+		score=Score;
+	}
 	public Key getOwner(){
 		return owner;
 	}
@@ -36,5 +50,6 @@ public class Team{
 	public Team(String Name, Key Owner){
 		name = Name;
 		owner = Owner;
+		score =0;
 	}
 }
