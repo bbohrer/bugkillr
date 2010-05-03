@@ -20,7 +20,8 @@ public class User{
 	
 	//String for the user's team
 	@Persistent
-	private String teamId;
+	private Key teamId;
+	private String teamName; 
 	
 	//User's current score
 	@Persistent
@@ -40,15 +41,20 @@ public class User{
 	public String getAccountId(){
 		return emailAddr;
 	}
-	public String getTeamId(){
+	public Key getTeamId(){
 		return teamId;
 	}
-	public User(String TeamId, String EmailAddr){
+	public String getTeamName(){
+		return teamName;
+	}
+	public User(Key TeamId, String TeamName, String EmailAddr){
 		teamId = TeamId;
+		teamName = TeamName;
 		emailAddr = EmailAddr;
 		score = 0;
 	}
-	public void setTeam(String TeamID) {
+	public void setTeam(Key TeamID, String TeamName) {
 		teamId = TeamID;
+		teamName = TeamName;
 	}
 }
