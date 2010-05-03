@@ -31,11 +31,15 @@ public class ViewUnsolvedProblemsServlet extends HttpServlet {
 				resp.getWriter().println("<tr><td>");
 				hw.writeLink("viewproblem?pid=" + p.getKey(), p.getName());
 				resp.getWriter().println("</td></tr>");
+
 			}
+
 			resp.getWriter().println("</table>");
 		} catch (Exception e) {
 			e.printStackTrace();
+
 		}
+
 		hw.writeEpilog();
 	}
 }

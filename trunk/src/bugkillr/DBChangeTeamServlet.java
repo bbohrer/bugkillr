@@ -73,7 +73,7 @@ public class DBChangeTeamServlet extends HttpServlet {
 				else{
 					//Look for the user in the datastore
 					User theUser = redir.getUserFromDatastorePM(pm);
-					theUser.setTeam(results.get(0).getName());
+					theUser.setTeam(results.get(0).getKey(), results.get(0).getName());
 					pm.makePersistent(theUser);
 				}
 			}

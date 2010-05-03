@@ -63,7 +63,7 @@ public class ViewTeamStatisticsServlet extends HttpServlet {
         response.getWriter().println("<table>" +
         		"<tr><td>Name</td><td>Score</td><td>Rank</td></tr>");
         for(Team team : results){
-        	response.getWriter().println("<tr><td><a href = \"viewteamdetail?team="+ URLEncoder.encode(team.getName(),"UTF-8")+"\">"+ 
+        	response.getWriter().println("<tr><td><a href = \"viewteamdetail?teamId="+ team.getKey().toString() + "\">"+ 
         			team.getName() + "</a></td><td>"+ team.getScore()+"</td><td>"+ rank++ + "</td></tr>");
         }
         response.getWriter().println("</table>");
