@@ -40,8 +40,7 @@ public class DBChangeTeamServlet extends HttpServlet {
 		}
 		
 		//Make sure the user entered a team name
-		if(teamName == null)
-		{
+		if(teamName == null){
 			resp.getWriter().println("Error: You did not enter a team name. Please go back and enter a team name.");
 		}
 		
@@ -73,7 +72,17 @@ public class DBChangeTeamServlet extends HttpServlet {
 				else{
 					//Look for the user in the datastore
 					User theUser = redir.getUserFromDatastorePM(pm);
-					theUser.setTeam(results.get(0).getKey(), results.get(0).getName());
+					Team newTeam = results.get(0);
+					Team oldTeam = redir.getTeamFromDatastorePM(pm);
+					
+					//Update the scores for the previous and new teams.
+					newTeam.setScore(newTeam.getScore() + theUser.getScore());
+					if(oldTeam !=null){
+					oldTeam.setScore(oldTeam.getScore() - theUser.getScore());
+					}
+					//Update the player's team
+					theUser.setTeam(newTeam.getName());
+					//I'm pretty sure this line should be removed
 					pm.makePersistent(theUser);
 				}
 			}

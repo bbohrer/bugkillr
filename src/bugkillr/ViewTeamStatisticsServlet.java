@@ -1,5 +1,6 @@
 package bugkillr;
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
@@ -7,8 +8,6 @@ import javax.jdo.Query;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import java.net.URLEncoder;
 
 import bugkillr.PMF;
 import bugkillr.Team;
@@ -40,12 +39,10 @@ public class ViewTeamStatisticsServlet extends HttpServlet {
         try{
         //If the user has a current team, tell them what it is
 			Team curTeam = redir.getTeamFromDatastore();
-			if(curTeam == null)
-			{
+			if(curTeam == null){
 				response.getWriter().println("<p> You are currently not on a team.</p>");
 			}
-			else
-			{
+			else{
 				response.getWriter().println("<p> Your current team is \"" + curTeam.getName() + "\".");
 			}
 		} catch (Exception e) {
@@ -63,7 +60,7 @@ public class ViewTeamStatisticsServlet extends HttpServlet {
         response.getWriter().println("<table>" +
         		"<tr><td>Name</td><td>Score</td><td>Rank</td></tr>");
         for(Team team : results){
-        	response.getWriter().println("<tr><td><a href = \"viewteamdetail?teamId="+ team.getKey().toString() + "\">"+ 
+        	response.getWriter().println("<tr><td><a href = \"viewteamdetail?team="+ URLEncoder.encode(team.getName(),"UTF-8")+"\">"+ 
         			team.getName() + "</a></td><td>"+ team.getScore()+"</td><td>"+ rank++ + "</td></tr>");
         }
         response.getWriter().println("</table>");

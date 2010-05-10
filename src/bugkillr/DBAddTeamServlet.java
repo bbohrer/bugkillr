@@ -45,7 +45,7 @@ public class DBAddTeamServlet extends HttpServlet {
 				if(req.getParameter("joinTeam") != null)
 				{
 					User curUser = redir.getUserFromDatastorePM(pm);
-					curUser.setTeam(newTeam.getKey(), newTeam.getName());
+					curUser.setTeam(teamName);
 					pm.makePersistent(curUser);
 				}
 					 
@@ -55,13 +55,11 @@ public class DBAddTeamServlet extends HttpServlet {
 		}
 
 		hw.writeHeader();
-		if(!existingTeams.isEmpty())
-		{
+		if(!existingTeams.isEmpty()){
 			resp.getWriter().println("<h1>Add Team to Database</h1>" +
 			"Error: There is already a team with the name you chose. Please go back and pick a different name.");
 		}
-		else
-		{
+		else{
 			resp.getWriter().println("<h1>Add Team to Database</h1>" +
 					"Added Team with the following parameters:<br/>\n" +
 					"Team Name: " + req.getParameter("teamName") +"<br/>\n" +

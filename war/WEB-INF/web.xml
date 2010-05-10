@@ -13,14 +13,6 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<url-pattern>/viewsubmission</url-pattern>
 	</servlet-mapping>
 	<servlet>
-		<servlet-name>ViewUnsolvedProblems</servlet-name>
-		<servlet-class>bugkillr.ViewUnsolvedProblemsServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>ViewUnsolvedProblems</servlet-name>
-		<url-pattern>/problems</url-pattern>
-	</servlet-mapping>
-	<servlet>
 		<servlet-name>SubmissionForm</servlet-name>
 		<servlet-class>bugkillr.SubmissionFormServlet</servlet-class>
 	</servlet>
@@ -131,6 +123,22 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	<servlet-mapping>
 		<servlet-name>ViewTeamStatisticsDetail</servlet-name>
 		<url-pattern>/viewteamdetail</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>AskAddUser</servlet-name>
+		<servlet-class>bugkillr.AskAddUserServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AskAddUser</servlet-name>
+		<url-pattern>/askadduser</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>AskJoinTeam</servlet-name>
+		<servlet-class>bugkillr.AskJoinTeamServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AskJoinTeam</servlet-name>
+		<url-pattern>/askjointeam</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>home</welcome-file>
