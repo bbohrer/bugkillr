@@ -16,6 +16,7 @@ import bugkillr.PMF;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLEncoder;
 
 
 /**
@@ -91,14 +92,14 @@ public class DBProcessSubmissionServlet extends HttpServlet {
 					HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 					connection.setDoOutput(true);
 					connection.setRequestMethod("POST");
-
+					
+					//Add the source code to the request
 					OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream());
-					writer.write("inputText=" + req.getParameter("inputText"));
-					writer.write("\npid=" + req.getParameter("pid"));
-					writer.close();
-
+		            writer.write("inputText=" + URLEncoder.encode(req.getParameter("inputText"), "UTF-8"));
+		            writer.close();
+		            
 					if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-						BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
+						BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 						//User's code passed the test
 						String firstLine;
 						if((firstLine = reader.readLine()).startsWith("PASS"))
@@ -143,7 +144,6 @@ public class DBProcessSubmissionServlet extends HttpServlet {
 				}
 			}
 		}
-
 		hw.writeEpilog();
 	}
 }

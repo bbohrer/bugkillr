@@ -38,12 +38,10 @@ public class ViewTeamsServlet extends HttpServlet {
         try{
         //If the user has a current team, tell them what it is
 			Team curTeam = redir.getTeamFromDatastore();
-			if(curTeam == null)
-			{
+			if(curTeam == null){
 				response.getWriter().println("<p> You are currently not on a team.</p>");
 			}
-			else
-			{
+			else{
 				response.getWriter().println("<p> Your current team is \"" + curTeam.getName() + "\".");
 			}
 		} catch (Exception e) {
