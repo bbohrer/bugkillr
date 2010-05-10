@@ -11,8 +11,6 @@ import java.net.URLDecoder;
 
 import bugkillr.PMF;
 import bugkillr.Team;
-import com.google.appengine.api.datastore.Key;
-import com.google.appengine.api.datastore.KeyFactory;
 
 import html.HTMLWriter;
 import redirects.Redirector;
@@ -38,56 +36,45 @@ public class ViewTeamStatisticsDetailServlet extends HttpServlet  {
         
         hw.writeProlog("Bugkiller - View Team Statistics");
         hw.writeHeader();
+        
+        if(request.getParameter("team") == null)
+        {
+        	response.getWriter().println("Error: No team was specified. This may occur if you log out and log in again," +
+        			" or if you entered the URL manually and misspelled it. If you reached this page from the team list," +
+        			" it is a bug. You can safely return to the page you were viewing with your browser's back button, or" +
+        			" navigate to another page using the menu bar.");
+        	hw.writeEpilog();
+        	return;
+        }
+        
         Team curTeam = null;
-        String curId = request.getParameter("teamId");
         try{
-        	Query q = pm.newQuery("select from " + Team.class.getName() + " where key == curId");
-        	q.declareParameters("String curId");
-        	List<Team> teams = (List<Team>) q.execute(curId);
+        	Query q = pm.newQuery("select from "+Team.class.getName() + " where name == teamName parameters String teamName");
+        	List<Team> teams = (List<Team>) q.execute(URLDecoder.decode(request.getParameter("team"), "UTF-8"));
         	if(teams.size() > 1)
-        		response.getWriter().println("Error: Database error. Please contact administrator");
-        	else if (teams.size() == 0){
-        		response.getWriter().println("Error: Team " + curId + " not found");
-        		response.getWriter().println("select from " + Team.class.getName() + " where key == " + curId);
-        	}
+        		response.getWriter().println("Error: Multiple teams with the same name");
+        	else if (teams.size() == 0)
+        		response.getWriter().println("Error: Team not found");
         	else
         		curTeam = teams.get(0);
-        	//Key teamId = KeyFactory.createKey(Team.class.getSimpleName(), curId);
-        	//response.getWriter().println(teamId);
-        	//response.getWriter().println(teamId.toString());
-        	//curTeam = pm.getObjectById(Team.class, curId);
-        	//if (curTeam == null) {
-        	//	response.getWriter().println("Team " + curId.toString() + "not found");
-        	//} else response.getWriter().println("Team " + curTeam.toString() + " found");
 		} catch (Exception e) {
 			response.getWriter().println(e);
-			e.printStackTrace();
 		}
         
-		try {
-        //Show the members of the team
-        response.getWriter().println("Scores By User: <br/>" + "select from " + User.class.getName() + " where teamId == " + curTeam.getKey() + "order by score descending");
-		} catch (Exception e) {
-			response.getWriter().println(e);
-			e.printStackTrace();
-		}
-        //Make a query to show all the team member
+        //Show the available teams
+        response.getWriter().println("Scores By User: <br/>");
+        //Make a query to show all the teams
         Query getUsers = pm.newQuery("select from " + User.class.getName() + " where teamId == curId order by score descending");
         getUsers.declareParameters("String curId");
-        try {
-        	List<User> results = (List<User>)getUsers.execute(curTeam.getKey());
-            //Write out the list of teams
-            int rank = 1;
-            response.getWriter().println("<table>" +
-            		"<tr><td>Name</td><td>Score</td><td>Rank</td></tr>");
-            for( User u : results){
-            	response.getWriter().println("<tr><td>"+u.getAccountId() + "</a></td><td>"+ u.getScore()+"</td><td>"+ rank++ + "</td><td>"+ u.getTeamId() +"</td></tr>");
-            }
-            response.getWriter().println("</table>");
-        } catch (Exception e)
-        {
-        	e.printStackTrace();
+        List<User> results = (List<User>)getUsers.execute(curTeam.getName());
+        //Write out the list of teams
+        int rank = 1;
+        response.getWriter().println("<table>" +
+        		"<tr><td>Name</td><td>Score</td><td>Rank</td></tr>");
+        for( User u : results){
+        	response.getWriter().println("<tr><td>"+u.getAccountId() + "</a></td><td>"+ u.getScore()+"</td><td>"+ rank++ + "</td><td>"+ u.getTeamId() +"</td></tr>");
         }
+        response.getWriter().println("</table>");
         hw.writeEpilog();
     }
 }

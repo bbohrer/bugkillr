@@ -102,4 +102,15 @@ public class HTMLWriter {
 		}
 		writeRule();
 	}
+	
+	//Write a message explaining the GET method is unsupported for a page.
+	//This occurs when the player accesses a page that uses POST, then logs
+	//out and logs back in.
+	public void writeUnsupportedGet() throws IOException
+	{
+		resp.getWriter().println("You have accessed this page through the HTTP GET method," +
+				"which this page does not support. This generally occurs if you log out and" +
+				"log in again. This is completely normal. Please navigate to another page and" +
+				"continue what you were doing.");
+	}
 }
