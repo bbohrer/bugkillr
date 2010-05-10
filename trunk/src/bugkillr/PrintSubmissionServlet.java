@@ -5,6 +5,7 @@ import java.util.Enumeration;
 
 
 import javax.servlet.http.*;
+
 import html.HTMLWriter;
 /**
  * @author Randy Bohrer
@@ -30,5 +31,12 @@ public class PrintSubmissionServlet extends HttpServlet {
 	    
 		hw.writeEpilog();
 		//req.getParameter("inputtext")
+	}
+	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		HTMLWriter hw = new HTMLWriter(req, resp);
+		hw.writeProlog("Bugkiller - View Problem Submission");
+		hw.writeHeader();
+		hw.writeUnsupportedGet();
+		hw.writeEpilog();
 	}
 }

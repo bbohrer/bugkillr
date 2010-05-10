@@ -26,6 +26,7 @@ public class ViewProblemServlet extends HttpServlet {
 		long pid = 0;
 		Problem curProblem = null;
 		User curUser = null;
+		hw.writeHeader();
 		try {
 			redir.userRedirect();
 			pid = Integer.parseInt(req.getParameter("pid"));
@@ -35,11 +36,18 @@ public class ViewProblemServlet extends HttpServlet {
 			if(probs.size() > 1)throw new Exception("Multiple problems found for this ID");
 			if(probs.size() == 0)throw new Exception("Problem not found");
 			curProblem = probs.get(0);
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		hw.writeHeader();
+		if(curProblem == null)
+		{
+			resp.getWriter().println("This problem is not in the database. If you reached this page from the problem " +
+					"menu, this is a bug. If you reached this page by entering the URL in the address bar, you most likely " +
+					"forgot or mis-typed the problem ID.");
+			hw.writeEpilog();
+			return;
+			
+		}
 		if(curProblem.getMinscore() > curUser.getScore())
 		{
 			resp.getWriter().println("Error: You do not have the score required to view this problem.");

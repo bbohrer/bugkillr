@@ -30,6 +30,15 @@ public class SubmissionFormServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
+		if(req.getParameter("pid") == null)
+		{
+			resp.getWriter().println("Error: No problem ID was supplied. If you try to submit this form, the " +
+					"submission will not be processed. This error most likely occurred because you logged out " +
+					"and logged in again. If you were at this page before, you can safely return to it with your " +
+					"browser's back button.");
+			hw.writeEpilog();
+			return;
+		}
 		//Display a message to the user
 		resp.getWriter().println("Copy and paste your source code into the area below.<br/>\n");
 		//Submission form

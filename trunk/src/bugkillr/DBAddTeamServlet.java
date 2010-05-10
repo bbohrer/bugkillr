@@ -18,7 +18,13 @@ import bugkillr.Team;
  * */
 @SuppressWarnings("serial")
 public class DBAddTeamServlet extends HttpServlet {
-
+	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		HTMLWriter hw = new HTMLWriter(req, resp);
+		hw.writeProlog("Bugkiller - Add Team to Database");
+		hw.writeHeader();
+		hw.writeUnsupportedGet();
+		hw.writeEpilog();
+	}
 	@SuppressWarnings("unchecked")
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		PersistenceManager pm = PMF.get().getPersistenceManager();

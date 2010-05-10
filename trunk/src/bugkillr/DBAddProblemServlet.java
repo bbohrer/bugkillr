@@ -15,6 +15,13 @@ import bugkillr.Problem;
  * */
 @SuppressWarnings("serial")
 public class DBAddProblemServlet extends HttpServlet {
+	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		HTMLWriter hw = new HTMLWriter(req, resp);
+		hw.writeProlog("Bugkiller - Add Team to Database");
+		hw.writeHeader();
+		hw.writeUnsupportedGet();
+		hw.writeEpilog();
+	}
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		HTMLWriter hw = new HTMLWriter(req, resp);

@@ -25,8 +25,16 @@ import java.net.URLEncoder;
  * solver, sends the code to the solver, reads the result, and updates the database
  * as necessary.
  */
+
 @SuppressWarnings("serial")
 public class DBProcessSubmissionServlet extends HttpServlet {
+	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		HTMLWriter hw = new HTMLWriter(req, resp);
+		hw.writeProlog("Bugkiller - Submit Problem Solution");
+		hw.writeHeader();
+		hw.writeUnsupportedGet();
+		hw.writeEpilog();
+	}
 	@SuppressWarnings("unchecked")
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
