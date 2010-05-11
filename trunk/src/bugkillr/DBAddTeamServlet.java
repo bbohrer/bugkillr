@@ -52,7 +52,7 @@ public class DBAddTeamServlet extends HttpServlet {
 				if(req.getParameter("joinTeam") != null)
 				{
 					User curUser = redir.getUserFromDatastorePM(pm);
-					curUser.setTeam(newTeam.getKey(), teamName);
+					curUser.setTeam(teamName);
 					pm.makePersistent(curUser);
 				}
 					 
