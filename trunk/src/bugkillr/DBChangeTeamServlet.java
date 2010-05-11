@@ -29,6 +29,7 @@ public class DBChangeTeamServlet extends HttpServlet {
 		
 		hw.writeProlog("Bugkiller - Change Teams");
 		hw.writeHeader();
+		resp.getWriter().println("<h1>Change Teams</h1>");
 		
 		//Redirect if the user is logged in or not in the database.
 		redir.loginRedirect();

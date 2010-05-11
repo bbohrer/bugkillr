@@ -57,7 +57,6 @@ public class ViewProblemServlet extends HttpServlet {
 			resp.getWriter().println("<h1>View Problem</h1>");
 			resp.getWriter().println("<h2>Problem Name: "+ curProblem.getName()+"</h2>");
 			resp.getWriter().println("<h3>Current Score: " + curUser.getScore() + "</h3>");
-			resp.getWriter().println("<h3>Description</h3>");
 	
 			URL url = new URL(curProblem.getDescriptionURL());
 			HttpURLConnection connection = (HttpURLConnection) url.openConnection();

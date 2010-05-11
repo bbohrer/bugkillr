@@ -32,6 +32,7 @@ public class DBProcessSubmissionServlet extends HttpServlet {
 		HTMLWriter hw = new HTMLWriter(req, resp);
 		hw.writeProlog("Bugkiller - Submit Problem Solution");
 		hw.writeHeader();
+		resp.getWriter().println("<h1>Submit Problem Solution</h1>");
 		hw.writeUnsupportedGet();
 		hw.writeEpilog();
 	}
@@ -52,6 +53,7 @@ public class DBProcessSubmissionServlet extends HttpServlet {
 
 		hw.writeProlog("Bugkiller - Submit Problem Solution");
 		hw.writeHeader();
+		resp.getWriter().println("<h1>Submit Problem Solution</h1>");
 
 		//Look up the problem.
 		Query getProblem = pm.newQuery("select from " + Problem.class.getName() + " where key == pid");
@@ -124,15 +126,15 @@ public class DBProcessSubmissionServlet extends HttpServlet {
 						else
 						{
 							//Print out an error message.
-							resp.getWriter().println("Your submission failed with the folllowing error:");
+							resp.getWriter().println("Your submission failed with the folllowing error:<br/>");
 							String line;
 							while((line = reader.readLine()) != null)
 							{
-								resp.getWriter().println(line);
+								resp.getWriter().println(line + "<br/>");
 							}
 							resp.getWriter().println("Debugging information: <br/>");
-							resp.getWriter().println("First line = " + firstLine);
-							resp.getWriter().println("Solver URL = " + solverURL);
+							resp.getWriter().println("First line = " + firstLine + "<br/>");
+							resp.getWriter().println("Solver URL = " + solverURL + "<br/>");
 						}
 					} else {
 						resp.getWriter().println("An error occurred in the problem solver, HTTP Response code = " + connection.getResponseCode());

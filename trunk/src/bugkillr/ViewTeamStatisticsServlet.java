@@ -36,6 +36,7 @@ public class ViewTeamStatisticsServlet extends HttpServlet {
         
         hw.writeProlog("Bugkiller - View Team Statistics");
         hw.writeHeader();
+        response.getWriter().println("<h1>View Team Statistics</h1>");
         try{
         //If the user has a current team, tell them what it is
 			Team curTeam = redir.getTeamFromDatastore();
@@ -43,7 +44,7 @@ public class ViewTeamStatisticsServlet extends HttpServlet {
 				response.getWriter().println("<p> You are currently not on a team.</p>");
 			}
 			else{
-				response.getWriter().println("<p> Your current team is \"" + curTeam.getName() + "\".");
+				response.getWriter().println("<p> Your current team is \"" + curTeam.getName() + "\".</p>");
 			}
 		} catch (Exception e) {
 			response.getWriter().println(e);

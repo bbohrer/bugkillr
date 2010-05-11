@@ -20,7 +20,8 @@ public class PrintSubmissionServlet extends HttpServlet {
 		hw.writeProlog("Bugkiller - View Problem Submission");
 		hw.writeHeader();
 		
-		resp.getWriter().println("Viewing submission from " + req.getUserPrincipal().getName()+" <br/>\n" +
+		resp.getWriter().println("<h1>View Problem Submission</h1>" +
+				"Viewing submission from " + req.getUserPrincipal().getName()+" <br/>\n" +
 				"Problem ID = " + req.getParameter("pid")+"<br/>\n" +
 				"Source Code =" + req.getParameter("inputText") + "<br/>\n" );
 	    Enumeration paramNames = req.getParameterNames();

@@ -36,6 +36,7 @@ public class ViewTeamStatisticsDetailServlet extends HttpServlet  {
         
         hw.writeProlog("Bugkiller - View Team Statistics");
         hw.writeHeader();
+        response.getWriter().println("<h1>View Team Statistics</h1>");
         
         if(request.getParameter("team") == null)
         {
@@ -72,7 +73,7 @@ public class ViewTeamStatisticsDetailServlet extends HttpServlet  {
         response.getWriter().println("<table>" +
         		"<tr><td>Name</td><td>Score</td><td>Rank</td></tr>");
         for( User u : results){
-        	response.getWriter().println("<tr><td>"+u.getAccountId() + "</a></td><td>"+ u.getScore()+"</td><td>"+ rank++ + "</td><td>"+ u.getTeamId() +"</td></tr>");
+        	response.getWriter().println("<tr><td>"+u.getAccountId() + "</td><td>"+ u.getScore()+"</td><td>"+ rank++ + "</td><td>"+ u.getTeamId() +"</td></tr>");
         }
         response.getWriter().println("</table>");
         hw.writeEpilog();
