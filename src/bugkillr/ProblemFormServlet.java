@@ -29,7 +29,7 @@ public class ProblemFormServlet extends HttpServlet {
 		hw.writeHeader();
 		resp.getWriter().println(
 				"<h1>Submit New Problem</h1>" +
-				"<form name=\"input\" action=\"addproblemDB\" method=\"post\" ><br/>\n" +
+				"<form name=\"input\" action=\"addproblemDB\" method=\"post\" >\n" +
 					"<p>Name of the problem as it will appear in the problem list:<br/>\n" +
 					"<input type=\"text\" name=\"problemName\"/></p>\n" +
 					"<p>Complete URL for the problem's help material (including http://)<br/>\n" +
@@ -37,9 +37,9 @@ public class ProblemFormServlet extends HttpServlet {
 					"<p>Complete URL for the problem's description (including http://)<br/>\n" +
 					"<input type=\"text\" name=\"descriptionURL\"/></p>\n" +
 					"<p>Complete URL for the problem-solving program (including http://)<br/>\n" +
-					"<input type=\"text\" name=\"solverURL\"></textarea></p>\n" +
-					"<p>Minimum score required to play this problem</p>\n"+
-					"<input type=\"text\" name=\"minscore\"></textarea></p>\n"+
+					"<input type=\"text\" name=\"solverURL\"/></p>\n" +
+					"<p>Minimum score required to play this problem<br/>\n"+
+					"<input type=\"text\" name=\"minscore\"/></p>\n"+
 					"<input type=\"submit\" value=\"Submit\"/>"+
 				"</form>");
 		hw.writeEpilog();

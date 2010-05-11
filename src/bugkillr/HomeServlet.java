@@ -12,6 +12,7 @@ public class HomeServlet extends HttpServlet {
 		Redirector redir = new Redirector(req,resp);
 		hw.writeProlog("Bugkiller - Home");
 		hw.writeHeader();
+		resp.getWriter().println("<h1>Home</h1>");
 		try {
 			if(redir.isLoggedIn())
 			{

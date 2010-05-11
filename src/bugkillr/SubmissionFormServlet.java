@@ -21,6 +21,7 @@ public class SubmissionFormServlet extends HttpServlet {
 		Redirector redir = new Redirector(req,resp);
 		hw.writeProlog("Bugkiller - Submit a Solution");
 		hw.writeHeader();
+		resp.getWriter().println("<h1>Submit a Solution</h1>");
 		
 		//Make sure the player is logged in, is in the database and has a team.
 		redir.loginRedirect();

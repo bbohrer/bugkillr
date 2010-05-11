@@ -18,7 +18,8 @@ public class AskJoinTeamServlet extends HttpServlet {
 			HTMLWriter hw = new HTMLWriter(req,resp);
 			hw.writeProlog("Bugkiller - Please Join a Team");
 			hw.writeHeader();
-			resp.getWriter().println("You have been redirected to this page because" +
+			resp.getWriter().println("<h1>Please Join a Team</h1>" +
+					"You have been redirected to this page because" +
 					" you are currently not on a team. Some features" +
 					"of this site only work when you are on a team. To use these features," +
 					"please ");

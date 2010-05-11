@@ -27,6 +27,7 @@ public class ViewUnsolvedProblemsServlet extends HttpServlet {
 		}
 		hw.writeProlog("Bugkiller - Unsolved Problems");
 		hw.writeHeader();
+		resp.getWriter().println("<h1>Unsolved Problems</h1>");
 
 		Query getUnsolved = pm.newQuery("select from " + Problem.class.getName() +
 				" where minscore <= curScore order by minscore ascending");

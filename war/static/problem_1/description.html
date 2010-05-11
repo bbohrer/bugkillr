@@ -1,0 +1,81 @@
+<!-- This is an XHTML snippet that should be inserted into a larger page. It shouldn't be a complete document-->
+<h3>Introduction</h3>
+<pre style="font-family:Times New Roman, Times, serif;">
+This is your first day at Denseware, Inc. As you approach the
+dilapidated office building, you can't help but wonder whether this was the right
+place to get a summer job. But you agreed to the contract, and you'd never hear the end
+of it with you quit now. A fat, balding little man in a grey suit opens the front door
+and ushers you in. 
+
+"Hi, Noah!", he shouts with glee as he leads the way down the hall, "we're glad to have
+you on board! There are all sorts of new exciting... things we'll be doing. By the way,
+my name's Dick, and I'll be your boss here. Let me show you where you'll be working."
+
+Dick continues walking down the hallway. The walls here are lined with motivational
+posters and kitschy art. You notice a vending machine whose vending tray is completely
+clogged with bottles of Mr. Pib. It appears to have been this way for several weeks, if
+not longer. Dick leads you up the stairs and onto another floor.
+
+"Here we are," he says. "Say hello to your coworkers. Actually, coworker at the moment.
+We were a small team to begin with, and after Debra Bugger quit there's only two of us
+left. That's why we hired you in the first place. Paul! Come see the new blood! Kid,
+meet Paul. This guy's going to your mentor here."
+
+A seedy-looking man in a business shirt wanders out of his cubicle and extends his hand
+to you. 
+
+"Hey, I'm Paul. Nice to meet you. We'll be working in the same cube. Come in, I've 
+already got your first assignment picked out for you.
+
+Paul sits down at his workstation, which appears to be an Pentium-based machine, and
+loads up a copy of Windows 95. He opens a copy of Notepad containing the following code:
+</pre>
+<h3>Source Code</h3>
+<pre>
+#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+
+void uppercase(char* text, char* upper)
+{
+  for(int i; i &lt; strlen(text); i++)
+  {
+     if(text[i] &gt;= 'a' &amp;&amp; text[i] &lt;= 'z' && (i == 0 || text[i-1]==' '))
+     {
+         upper[i] = text[i] +  ('A' - 'a');
+     }
+  }
+}
+int main()
+{
+  char* text = new char[1024];
+  char* upper =new char[1024];
+
+  while(!std::cin.eof())
+    {
+      std::cin.getline(text, 1024);
+      uppercase(text, upper);
+      std::cout &lt;&lt; upper &lt;&lt; std::endl;
+    }
+  return 0;
+}
+</pre>
+<pre style="font-family:Times New Roman, Times, serif;">
+"Your machine won't be here for a few days, so you can use mine for the moment," Paul says,
+The code I gave you doesn't do what it's supposed to, so I want you to fix it for me.
+It's supposed to print out whatever you type in, with every word capitalized. The
+company has an automated testing system; just upload your code when you think you're
+done. Oh, and one last thing: make sure it preserves the original spacing."
+
+Paul walks out of the cubicle to go get some coffee.
+</pre>
+<h3>Instructions</h3>
+<pre style="font-family:Times New Roman, Times, serif;">
+To solve this problem, try using the GNU Debugger to trace the program's
+execution <!-- MAKE THIS A LINK Tool Lesson: Tracing Execution-->. When you have 
+debugged the program, upload it with the submission form, linked below. Your submission should
+contain only the function definition for <tt>uppercase</tt>.
+
+If you are having trouble with this problem, ask a friend for help, or consult the hints
+and message board. If you are certain your problem is correct, try it with the folllowing
+test data, which are similar to those used by the problem checker.
+</pre>

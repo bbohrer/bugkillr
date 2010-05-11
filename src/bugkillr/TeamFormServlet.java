@@ -29,7 +29,7 @@ public class TeamFormServlet extends HttpServlet {
 		hw.writeHeader();
 		resp.getWriter().println(
 				"<h1>Create New Team</h1>" +
-				"<form name=\"input\" action=\"addteamDB\" method=\"post\" ><br/>\n" +
+				"<form name=\"input\" action=\"addteamDB\" method=\"post\" >\n" +
 					"<p>Name of the team to create:<br/>\n" +
 					"<input type=\"text\" name=\"teamName\"/></p>\n" +
 					"<p>Join the new team " +

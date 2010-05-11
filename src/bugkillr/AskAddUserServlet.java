@@ -19,7 +19,8 @@ public class AskAddUserServlet extends HttpServlet {
 			HTMLWriter hw = new HTMLWriter(req,resp);
 			hw.writeProlog("Bugkiller - Please Register");
 			hw.writeHeader();
-			resp.getWriter().println("You have been redirected to this page because you are" +
+			resp.getWriter().println("<h1>Please Register</h1>" +
+					" You have been redirected to this page because you are" +
 					" currently not in the Bug Killer database." +
 					" To use most of the site's features, such as joining a team, solving problems," +
 					" and recording your scores, you must first register with the database. This takes" +

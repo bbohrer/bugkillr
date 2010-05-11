@@ -22,6 +22,7 @@ public class DBAddTeamServlet extends HttpServlet {
 		HTMLWriter hw = new HTMLWriter(req, resp);
 		hw.writeProlog("Bugkiller - Add Team to Database");
 		hw.writeHeader();
+		resp.getWriter().println("<h1>Add Team to Database</h1>");
 		hw.writeUnsupportedGet();
 		hw.writeEpilog();
 	}
@@ -61,6 +62,7 @@ public class DBAddTeamServlet extends HttpServlet {
 		}
 
 		hw.writeHeader();
+		resp.getWriter().println("<h1>Add Team to Database</h1>");
 		if(!existingTeams.isEmpty()){
 			resp.getWriter().println("<h1>Add Team to Database</h1>" +
 			"Error: There is already a team with the name you chose. Please go back and pick a different name.");

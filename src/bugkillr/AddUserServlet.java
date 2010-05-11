@@ -15,6 +15,7 @@ public class AddUserServlet extends HttpServlet {
 		Redirector redir = new Redirector(req,resp);
 		hw.writeProlog("Bugkiller - Add User");
 		hw.writeHeader();
+		resp.getWriter().println("<h1>Add User</h1>");
 		try {
 			if(redir.isLoggedIn())
 			{
@@ -26,7 +27,7 @@ public class AddUserServlet extends HttpServlet {
 					try
 					{
 							//Create a new user, with no team, and the user's email address as its address.
-							User user = new User(null, null, req.getUserPrincipal().getName());
+							User user = new User(null, req.getUserPrincipal().getName());
 							//Add the user to the database.
 							pm.makePersistent(user);
 							//Inform the user of success.
