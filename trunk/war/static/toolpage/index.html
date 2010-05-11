@@ -1,0 +1,56 @@
+<div id="title">Dia: Easy as 1, 2, 3 </div><br />
+<br />
+<div id="guide">Dia is an open source tool, currently has special objects to help draw entity relationship diagrams, UML diagrams, flowcharts, network diagrams, and simple circuits. It is also possible to add support for new shapes by writing simple XML files, using a subset of SVG to draw the shape. <br />
+It can load and save diagrams to a custom XML format (gzipped by default, to save space), can export diagrams to EPS or SVG formats and can print diagrams (including ones that span multiple pages). <br />
+<br />
+1. Set up <br />
+<br />
+In Ubuntu, you can install Dia by <br />
+sudo apt-get install dia <br />
+In other Unix-based, you may have to install gtk+ first. Then install glib and gnome. <br />
+<br />
+2. Basics <br />
+<br />
+Drawing a diagram generally is drawing text box, text and arrows with different kinds of hierarchy. Dia has enough tools for you to fulfill the task.<br />
+<br />
+<br />
+                          <br />
+  <br />
+To draw a diagram as the right image: <br />
+- Draw some text boxes <br />
+- Create some text blocks <br />
+- Align text to corresponding text box (disable align-to-grid by key 'g') <br />
+- Lock the text to text box <br />
+- Draw relationship lines. If you want to change the way line goes, break it into segments by 'add a segment'. <br />
+<br />
+3. Advanced <br />
+To learn more about Dia, vitsit its website: http://projects.gnome.org/dia/ <br /></div>
+<br />
+<br />
+<div class="title">GDB: The GNU Debugger <br /></div>
+<br />
+<div class="guide">
+GDB, the GNU Project debugger, allows you to see what is going on `inside' another program while it executes -- or what another program was doing at the moment it crashed. <br />
+GDB can do four main kinds of things (plus other things in support of these) to help you catch bugs in the act: <br />
+* Start your program, specifying anything that might affect its behavior. <br />
+* Make your program stop on specified conditions. <br />
+* Examine what has happened, when your program has stopped. <br />
+* Change things in your program, so you can experiment with correcting the effects of one bug and go on to learn about another. <br />
+The program being debugged can be written in Ada, C, C++, Objective-C, Pascal (and many other languages). Those programs might be executing on the same machine as GDB (native) or on another machine (remote). GDB can run on most popular UNIX and Microsoft Windows variants.<br />
+<br />
+1. Getting started <br />
+GDB is installed in almost every current popular Unix system. To run GDB on Unix environment, simply type 'gdb' in the terminal. By doing that we have started a gdb session, where we can control how a program runs and debug it. To quit gdb environment, just type 'quit' or 'q' to go back to Unix terminal. <br />
+Another requirement for your program to be able to debug is that you need to generate debugging information when you compile it. In gcc/g++, simply add '-g' argument when you compile your program.<br />
+<br />
+2. Basic commands <br />
+'run': run the program until it exits or gets an error <br />
+'start': start debugging process. this command is equal to setting a breakpoint after main function and then 'run'. <br />
+'n' or 'next': advance execution to the next line of the current function <br />
+'s' or 'step': advance execution to the next step of the current program, that means it may lead to a sub-function of the current function, in contrast with 'next' which may not. <br />
+'break location': set a breakpoint at the location. location can be a line number, a function name. the program will pause right before the location is executed.<br />
+'clear': delete any breakpoints <br />
+'clear location': clear the breakpoint at the location. <br />
+'p variable': display the value that variable stores. variable must be visible when the command is run, and in the form: 'filename::variable' or 'function::variable'<br />
+<br />
+3. Advanced commands<br />
+Try this: GDB Documentation</div>

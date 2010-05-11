@@ -82,7 +82,7 @@ public class DBChangeTeamServlet extends HttpServlet {
 					oldTeam.setScore(oldTeam.getScore() - theUser.getScore());
 					}
 					//Update the player's team
-					theUser.setTeam(newTeam.getName());
+					theUser.setTeam(newTeam.getKey(), newTeam.getName());
 					//I'm pretty sure this line should be removed
 					pm.makePersistent(theUser);
 				}

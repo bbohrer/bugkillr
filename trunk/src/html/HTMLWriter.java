@@ -86,7 +86,7 @@ public class HTMLWriter {
 		Redirector redir = new Redirector(req,resp);
 		writeLink("home", "Home");
 		writeLink("problems", "Unsolved Problems");
-		//writeLink("tools", "Tools");
+		writeLink("tools", "Tools");
 		writeLink("highscores", "Team Rankings");
 		writeLink("addteamform", "Create New Team");
 		writeLink("viewteams", "Join a Different Team");
