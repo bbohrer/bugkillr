@@ -122,7 +122,7 @@ public class Redirector {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		Query getTeam = pm.newQuery("select from "+Team.class.getName() + " where name == team_name");
 		getTeam.declareParameters("String team_name");
-		List<Team> results = (List<Team>)getTeam.execute(curUser.getTeamId());
+		List<Team> results = (List<Team>)getTeam.execute(curUser.getTeamName());
 		//Note: results.size() must be called while the datastore is open.
 		int numResults = results.size();
 		pm.close();
@@ -149,7 +149,7 @@ public class Redirector {
 		if(curUser == null) throw new Exception("No use");
 		Query getTeam = pm.newQuery("select from "+Team.class.getName() + " where name == team_name");
 		getTeam.declareParameters("String team_name");
-		List<Team> results = (List<Team>)getTeam.execute(curUser.getTeamId());
+		List<Team> results = (List<Team>)getTeam.execute(curUser.getTeamName());
 		//Note: results.size() must be called while the datastore is open.
 		int numResults = results.size();
 		//If no results were returned, it's a non-existent team

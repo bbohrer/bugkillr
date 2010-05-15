@@ -27,7 +27,9 @@ public class AddUserServlet extends HttpServlet {
 					try
 					{
 							//Create a new user, with no team, and the user's email address as its address.
+
 							User user = new User(null, req.getUserPrincipal().getName());
+
 							//Add the user to the database.
 							pm.makePersistent(user);
 							//Inform the user of success.

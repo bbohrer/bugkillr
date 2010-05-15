@@ -66,7 +66,7 @@ public class ConfigAcctServlet extends HttpServlet {
 						if(userResults.isEmpty())
 						{
 							resp.getWriter().println("DEBUG: You are not in the datastore and are being added. This is okay.");
-							User newUser = new User(teamToJoin.getKey(), teamToJoin.getName(), req.getUserPrincipal().getName());
+							User newUser = new User( teamToJoin.getName(), req.getUserPrincipal().getName());
 							pm.makePersistent(newUser);
 						}
 						//Duplicate users exist. Complain.
@@ -78,7 +78,7 @@ public class ConfigAcctServlet extends HttpServlet {
 						//One user exists. Update their team.
 						else
 						{
-							userResults.get(0).setTeam(teamToJoin.getKey(), teamToJoin.getName());
+							userResults.get(0).setTeam( teamToJoin.getName());
 							resp.getWriter().println("Team successfully updated.");
 						}
 					}
