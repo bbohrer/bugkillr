@@ -30,7 +30,7 @@ public class ViewTeamsServlet extends HttpServlet {
         try {
 			redir.userRedirect();
 		} catch (Exception e) {
-			response.getWriter().println(e);
+			e.printStackTrace(response.getWriter());
 		}
         
         hw.writeProlog("Bugkiller - View Teams");
@@ -46,7 +46,7 @@ public class ViewTeamsServlet extends HttpServlet {
 				response.getWriter().println("<p> Your current team is \"" + curTeam.getName() + "\".</p>");
 			}
 		} catch (Exception e) {
-			response.getWriter().println(e);
+			e.printStackTrace(response.getWriter());
 		}
         
         //Show the available teams

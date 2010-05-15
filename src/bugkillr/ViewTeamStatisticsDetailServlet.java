@@ -65,7 +65,7 @@ public class ViewTeamStatisticsDetailServlet extends HttpServlet  {
         //Show the available teams
         response.getWriter().println("Scores By User: <br/>");
         //Make a query to show all the teams
-        Query getUsers = pm.newQuery("select from " + User.class.getName() + " where teamId == curId order by score descending");
+        Query getUsers = pm.newQuery("select from " + User.class.getName() + " where teamName == curId order by score descending");
         getUsers.declareParameters("String curId");
         List<User> results = (List<User>)getUsers.execute(curTeam.getName());
         //Write out the list of teams
@@ -73,7 +73,7 @@ public class ViewTeamStatisticsDetailServlet extends HttpServlet  {
         response.getWriter().println("<table>" +
         		"<tr><td>Name</td><td>Score</td><td>Rank</td></tr>");
         for( User u : results){
-        	response.getWriter().println("<tr><td>"+u.getAccountId() + "</td><td>"+ u.getScore()+"</td><td>"+ rank++ + "</td><td>"+ u.getTeamId() +"</td></tr>");
+        	response.getWriter().println("<tr><td>"+u.getAccountId() + "</td><td>"+ u.getScore()+"</td><td>"+ rank++ + "</td></tr>");
         }
         response.getWriter().println("</table>");
         hw.writeEpilog();

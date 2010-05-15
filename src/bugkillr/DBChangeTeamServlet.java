@@ -48,6 +48,7 @@ public class DBChangeTeamServlet extends HttpServlet {
 		//Add them to the specified team.
 		else
 		{
+			PersistenceManager user_pm = PMF.get().getPersistenceManager();
 			PersistenceManager pm = PMF.get().getPersistenceManager();
 			try
 			{
@@ -72,7 +73,7 @@ public class DBChangeTeamServlet extends HttpServlet {
 				//Exactly one team with the given name exists. Join it.
 				else{
 					//Look for the user in the datastore
-					User theUser = redir.getUserFromDatastorePM(pm);
+					User theUser = redir.getUserFromDatastorePM(user_pm);
 					Team newTeam = results.get(0);
 					Team oldTeam = redir.getTeamFromDatastorePM(pm);
 					
@@ -82,19 +83,19 @@ public class DBChangeTeamServlet extends HttpServlet {
 					oldTeam.setScore(oldTeam.getScore() - theUser.getScore());
 					}
 					//Update the player's team
-					theUser.setTeam(newTeam.getName());
+					theUser.setTeam( newTeam.getName());
 					//I'm pretty sure this line should be removed
-					pm.makePersistent(theUser);
+					user_pm.makePersistent(theUser);
 				}
 			}
 			
-			//If getUserFromDatastorePM function finds multiple users for your email address, warn the user.
 			catch (Exception e) {
-				resp.getWriter().println(e);
+				e.printStackTrace(resp.getWriter());
 			}
 			//Always close the PersistenceManager, even in the event of an error.
 			finally{	
 				pm.close();
+				user_pm.close();
 			}
 			resp.getWriter().println("Team has been updated.");
 		}
