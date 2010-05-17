@@ -2,6 +2,10 @@ package bugkillr;
 import java.io.IOException;
 
 import javax.servlet.http.*;
+
+import com.google.appengine.api.users.UserService;
+import com.google.appengine.api.users.UserServiceFactory;
+
 import html.HTMLWriter;
 import redirects.Redirector;
 
@@ -25,12 +29,23 @@ public class HomeServlet extends HttpServlet {
 				}
 				else
 				{
-					resp.getWriter().println("Welcome back," + req.getUserPrincipal().getName());
+					resp.getWriter().println("Welcome back, " + req.getUserPrincipal().getName() +"<br/>" +
+							"<p>Note: We're constantly updating things, so if something's broken, please ");
+					hw.writeLink("feedback", "tell us");
+					resp.getWriter().println(". Even if nothing's broken, feel free to tell us what you think.</p>" +
+							"<p> Don't know what to do? Read the ");
+					hw.writeLink("/gettingstarted", "getting started");
+					resp.getWriter().println(" page.</p>");
 				}
 			}
 			else
 			{
-				resp.getWriter().println("Please log in to your Google Apps Account");
+				UserService us = UserServiceFactory.getUserService();
+				resp.getWriter().println("Please ");
+				hw.writeLink(us.createLoginURL(req.getRequestURI()), "log in.");
+				resp.getWriter().println(" Bug Killer uses Google Accounts to handle logins. " +
+						"If you do not have a Google Account, please "); 
+				hw.writeLink("https://www.google.com/accounts/NewAccount", "create one.");
 			}
 		} catch (Exception e) {
 			//TODO Use a more specific exception

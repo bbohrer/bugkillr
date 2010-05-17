@@ -43,38 +43,52 @@ public class ViewProblemServlet extends HttpServlet {
 		{
 			resp.getWriter().println("This problem is not in the database. If you reached this page from the problem " +
 					"menu, this is a bug. If you reached this page by entering the URL in the address bar, you most likely " +
-					"forgot or mis-typed the problem ID.");
+			"forgot or mis-typed the problem ID.");
 			hw.writeEpilog();
 			return;
-			
+
 		}
 		if(curProblem.getMinscore() > curUser.getScore())
 		{
-			resp.getWriter().println("Error: You do not have the score required to view this problem.");
+			resp.getWriter().println("Error: You do not have the score required to view this problem.<br/>\n" +
+					"Your score: " + curUser.getScore() + "<br/>\n" +
+							"Required score:");
 		}
 		else
 		{
-			resp.getWriter().println("<h1>View Problem</h1>");
-			resp.getWriter().println("<h2>Problem Name: "+ curProblem.getName()+"</h2>");
-			resp.getWriter().println("<h3>Current Score: " + curUser.getScore() + "</h3>");
-	
-			URL url = new URL(curProblem.getDescriptionURL());
-			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-			connection.setDoOutput(true);
-			connection.setRequestMethod("GET");
-			String line = null;
-			if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-				BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
-				while((line = reader.readLine()) != null)
-					resp.getWriter().println(line);
-			}
-			else
-			{
+			try {
+				resp.getWriter().println("<h1>View Problem</h1>");
+				PersistenceManager junction_pm = PMF.get().getPersistenceManager();
+				Query getJunction = junction_pm.newQuery("select from " + UserProblemJunction.class.getName() +
+						" where userId == theID && problemId == thePID" +
+				" parameters com.google.appengine.api.datastore.Key theID, Long thePID");
+
+				List<UserProblemJunction> junct = (List<UserProblemJunction>) getJunction.execute(redir.getUserFromDatastore().getKey(),pid);
+
+				resp.getWriter().println("<h2>Problem Name: "+ curProblem.getName()+ (junct.isEmpty()?" (Unsolved)":" (Solved)")+"</h2>");
+				resp.getWriter().println("<h3>Current Score: " + curUser.getScore() + "</h3>");
+
+				URL url = new URL(curProblem.getDescriptionURL());
+				HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+				connection.setDoOutput(true);
+				connection.setRequestMethod("GET");
+				String line = null;
+				if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
+					BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
+					while((line = reader.readLine()) != null)
+						resp.getWriter().println(line);
+				}
+				else
+				{
 					resp.getWriter().println("Error: Could not open description file.");
+				}
+				hw.writeLink( curProblem.getHelpURL() ,"View hints for this problem.");
+				hw.writeLink("submitform?pid=" + pid, "Submit your solution for this problem.");
+				hw.writeEpilog();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-			hw.writeLink( curProblem.getHelpURL() ,"View hints for this problem.");
-			hw.writeLink("submitform?pid=" + pid, "Submit your solution for this problem.");
-			hw.writeEpilog();
 		}	
 	}
 }

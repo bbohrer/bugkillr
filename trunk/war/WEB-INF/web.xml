@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xmlns="http://java.sun.com/xml/ns/javaee"
-xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
-http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
 	<servlet>
 		<servlet-name>ViewSubmission</servlet-name>
 		<servlet-class>bugkillr.PrintSubmissionServlet</servlet-class>
@@ -76,7 +76,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>AddTeamForm</servlet-name>
 		<url-pattern>/addteamform</url-pattern>
 	</servlet-mapping>
-		<servlet>
+	<servlet>
 		<servlet-name>AddTeamDB</servlet-name>
 		<servlet-class>bugkillr.DBAddTeamServlet</servlet-class>
 	</servlet>
@@ -94,7 +94,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>ViewUnsolvedProblems</servlet-name>
-		<servlet-class>bugkillr.ViewUnsolvedProblemsServlet</servlet-class>
+		<servlet-class>bugkillr.ViewAvailableProblemsServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>ViewUnsolvedProblems</servlet-name>
@@ -147,6 +147,22 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	<servlet-mapping>
 		<servlet-name>Tools</servlet-name>
 		<url-pattern>/tools</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>Feedback</servlet-name>
+		<servlet-class>bugkillr.FeedbackServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Feedback</servlet-name>
+		<url-pattern>/feedback</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>GettingStarted</servlet-name>
+		<servlet-class>bugkillr.GettingStartedServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GettingStarted</servlet-name>
+		<url-pattern>/gettingstarted</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>home</welcome-file>

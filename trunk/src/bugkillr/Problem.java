@@ -37,6 +37,7 @@ public class Problem{
 	
 	/*Score required before problem can be played*/
 	private int minscore;
+	
 	public long getKey(){
 		return key;
 	}
@@ -46,8 +47,7 @@ public class Problem{
 	public String getSolverURL(){
 		return solverURL;
 	}
-	public String getHelpURL()
-	{
+	public String getHelpURL(){
 		return helpURL;
 	}
 	public String getName(){

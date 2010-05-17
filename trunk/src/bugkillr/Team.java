@@ -5,6 +5,7 @@ import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
+import javax.jdo.annotations.Unique;
 
 
 @PersistenceCapable
@@ -16,6 +17,7 @@ public class Team{
 	
 	//Team's name, chosen by creator when the team is made. Displayed on high scores page, etc.
 	@Persistent
+	@Unique
 	private String name;
 	
 	//The user that created the team
