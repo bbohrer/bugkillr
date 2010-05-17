@@ -61,6 +61,7 @@ public class DBChangeTeamServlet extends HttpServlet {
 				if(results.isEmpty())
 				{
 					resp.getWriter().println("Error: The team you selected does not exist.");
+					return;
 				}
 				
 				//Multiple results mean there were multiple teams with a given name. This is bad.
@@ -68,6 +69,7 @@ public class DBChangeTeamServlet extends HttpServlet {
 				{
 					resp.getWriter().println("Error: There are multiple teams with this name." +
 							"Please file a bug report.");
+					return;
 				}
 				
 				//Exactly one team with the given name exists. Join it.

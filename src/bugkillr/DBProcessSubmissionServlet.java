@@ -130,7 +130,7 @@ public class DBProcessSubmissionServlet extends HttpServlet {
 							String line;
 							while((line = reader.readLine()) != null)
 							{
-								resp.getWriter().println(line + "<br/>");
+								resp.getWriter().println(line);
 							}
 							resp.getWriter().println("Debugging information: <br/>");
 							resp.getWriter().println("First line = " + firstLine + "<br/>");

@@ -5,6 +5,7 @@ import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
+import javax.jdo.annotations.Unique;
 
 @PersistenceCapable(detachable="true")
 public class User{
@@ -15,12 +16,13 @@ public class User{
 	private Key key;
 	
 	//User's email address
+	@Unique
 	@Persistent
 	private String emailAddr;
 	
 	//String for the user's team
 	@Persistent
-	private String teamName; 
+	private String teamId; 
 	
 	//User's current score
 	@Persistent
@@ -41,14 +43,14 @@ public class User{
 		return emailAddr;
 	}
 	public String getTeamName(){
-		return teamName;
+		return teamId;
 	}
 	public User(String TeamName, String EmailAddr){
-		teamName = TeamName;
+		teamId = TeamName;
 		emailAddr = EmailAddr;
 		score = 0;
 	}
 	public void setTeam( String TeamName) {
-		teamName = TeamName;
+		teamId = TeamName;
 	}
 }

@@ -17,7 +17,7 @@ import redirects.Redirector;
 public class HTMLWriter {
 	private HttpServletResponse resp;
 	private HttpServletRequest req;
-	
+
 	/**
 	 * @param Resp The HttpServletResponse which the HTMLWriter will write to
 	 */
@@ -26,7 +26,7 @@ public class HTMLWriter {
 		req = Req;
 		resp = Resp;
 	}
-	
+
 	/**
 	 * @param titleText The page's title
 	 * @throws IOException
@@ -42,7 +42,7 @@ public class HTMLWriter {
 				"<meta http-equiv=\"Content-type\" content=\"text/html;charset=UTF-8\" />" +
 				"<title>" + titleText + "</title>\n" +
 				"</head>\n" +
-				"<body>");
+		"<body>");
 	}
 	/**
 	 * @throws IOException
@@ -51,9 +51,9 @@ public class HTMLWriter {
 	public void writeEpilog() throws IOException
 	{
 		resp.getWriter().println("</body>\n" +
-								 "</html>");
+		"</html>");
 	}
-	
+
 	/**
 	 * @param address The address that the link leads to.
 	 * @param text The text of the link
@@ -64,7 +64,7 @@ public class HTMLWriter {
 	{
 		resp.getWriter().println("<a href=\"" + address + "\">" + text + "</a>");
 	}
-	
+
 	/**
 	 * @throws IOException 
 	 * Inserts a horizontal rule on the page.
@@ -85,12 +85,14 @@ public class HTMLWriter {
 		UserService us = UserServiceFactory.getUserService();
 		Redirector redir = new Redirector(req,resp);
 		writeLink("home", "Home");
-		writeLink("problems", "Unsolved Problems");
+		writeLink("problems", "Available Problems");
 		writeLink("tools", "Tools");
 		writeLink("highscores", "Team Rankings");
 		writeLink("addteamform", "Create New Team");
 		writeLink("viewteams", "Join a Different Team");
-		writeLink("addproblemform","Create New Problem");
+		if(us.isUserLoggedIn() && us.isUserAdmin()){
+			writeLink("addproblemform","Create New Problem");
+		}
 		//Use Google Apps API to generate login/logout links.
 		if(redir.isLoggedIn())
 		{
@@ -102,7 +104,7 @@ public class HTMLWriter {
 		}
 		writeRule();
 	}
-	
+
 	//Write a message explaining the GET method is unsupported for a page.
 	//This occurs when the player accesses a page that uses POST, then logs
 	//out and logs back in.
@@ -111,6 +113,6 @@ public class HTMLWriter {
 		resp.getWriter().println("You have accessed this page through the HTTP GET method," +
 				"which this page does not support. This generally occurs if you log out and" +
 				"log in again. This is completely normal. Please navigate to another page and" +
-				"continue what you were doing.");
+		"continue what you were doing.");
 	}
 }
