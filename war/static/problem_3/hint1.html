@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN\
+				"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+<title>Hints</title>
+</head>
+<body>
+<h1>Hint - Dealing With Unstructured Code</h1>
+<p>
+The program from this problem is an example of unstructured code, where loops and blocks of conditional code
+are implemented with <tt>goto</tt> statements, which perform an unconditional jump to another place in the
+program. When reverse-engineering a program like this, it helps to know how high-level constructs look when
+implemented with <tt>goto</tt>. Most constructs can be represented in several ways, but these are some of the more
+common formats.</p>
+While loop:<pre>
+begin:
+if(!condition) goto end;
+loop body;
+goto begin;
+end:
+Rest of program...
+</pre>
+If-then-else statement:<pre>
+if(condition) goto then;
+else-statements;
+goto end;
+then:
+then-statements;
+end:
+Rest of program...
+</pre>
+If-then statement:<pre>
+if(!condition) goto end;
+then-statements;
+end:
+Rest of program...
+</pre>
+</body>
+</html>

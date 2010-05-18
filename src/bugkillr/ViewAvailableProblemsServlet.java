@@ -46,12 +46,15 @@ public class ViewAvailableProblemsServlet extends HttpServlet {
 			List<Problem> unsolvedProblems = (List<Problem>) getUnsolved.execute(curUser.getScore());
 			List<Long> junctions = (List<Long>) getJunctions.execute(curUser.getKey());
 			Set<Long> pidSet = new HashSet<Long>(junctions);
-			resp.getWriter().println("<table>");
+			resp.getWriter().println("<table>" +
+					"<th>Problem Name</th><th>Solved</th>");
 			for(Problem p : unsolvedProblems)
 			{
 				
 				resp.getWriter().println("<tr><td>");
-				hw.writeLink("viewproblem?pid=" + p.getKey(), p.getName() + (pidSet.contains(p.getKey())? " (Solved) ":" (Unsolved)"));
+				hw.writeLink("viewproblem?pid=" + p.getKey(), p.getName());
+				resp.getWriter().println("</td><td>");
+				resp.getWriter().println(pidSet.contains(p.getKey())? "Solved":"Unsolved");
 				resp.getWriter().println("</td></tr>");
 			}
 			resp.getWriter().println("</table>");

@@ -77,7 +77,7 @@ public class ViewTeamStatisticsDetailServlet extends HttpServlet  {
 			response.getWriter().println("Scores By User: <br/>");
 			int rank = 1;
 			response.getWriter().println("<table>" +
-			"<tr><td>Name</td><td>Score</td><td>Rank</td></tr>");
+			"<tr><th>Name</th><th>Score</th><th>Rank</th></tr>");
 			for( User u : results){
 				response.getWriter().println("<tr><td><a href=\"mailto:"+u.getAccountId() + "\">"+u.getAccountId() +"</a></td><td>"+ u.getScore()+"</td><td>"+ rank++ + "</td></tr>");
 			}

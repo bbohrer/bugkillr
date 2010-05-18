@@ -1,0 +1,101 @@
+<!-- This is an XHTML snippet that should be inserted into a larger page. It shouldn't be a complete document-->
+<h3>Introduction</h3>
+<pre style="font-family:Times New Roman, Times, serif;">
+When you arrive at the office, you see a firetruck parked outside, a trampoline on the ground, and
+a few firefighters with megaphones. Up on the rooftop you see Paul, shouting his head off.
+
+	"Listen to me. I'm tired of this goddamn code. I'm tired of this goddamn job.
+	I'm tired of all these goddamn bugs and these worthless users always complaining
+	about how the software doesn't do what they want, and if somebody doesn't start
+	fixing our goddamn software, I'm going to jump. I mean it. One more line of
+	buggy code and I'm nothing but a stain on the parking lot."
+	
+During the spectacle, your boss runs out the front door and approaches you. 
+
+	"Thank god you're here. Paul's gone nuts and if you don't fix the program he
+	was working on I'm afraid he'll kill himself."
+	
+As you head inside, the boss explains in greater detail.
+
+	"I don't see what was so hard about it. It was just a little run-length encoding program.
+	 You send it pairs of numbers and characters, and it spits out the characters, repeated
+	 multiple times depending on the number. I don't know exactly what was wrong but he kept
+	 complaining that it repeated things too many times."
+	 
+When you reach your floor of the building, Bossman takes you to the workstation containing
+the suicide-inducing code.
+</pre>
+<h3>Source Code</h3>
+<pre>
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;cstdlib&gt;
+
+
+int main()
+{
+  char input[1023]; int nchar; int i; int c; char C; int d;
+ L2:
+  if(fgets(input, 1023, stdin) == NULL) goto L1;
+  nchar = strlen(input);
+  if(input[nchar-1] != '\n')goto L3;
+  nchar--;
+  if(nchar % 2 == 0) goto L4;
+  printf("ERROR WRONG NUMBER OF CHARS");
+  exit(1);
+ L3:
+  if(nchar % 2 == 0)goto L4;
+  printf("ERROR WRONG NUMBER OF CHARS");
+  exit(1);
+ L4:
+  i = 0;
+ L9:
+  if(i+1&gt;nchar)goto L5;
+  c = (int) input[i];
+  C = input[i+1];
+ L6:
+  d = 0;
+ L8:
+  if(d&gt;=c) goto L7;
+  putchar(C);
+  d++;
+  goto L8;
+ L7:
+  i+=2;
+  goto L9;
+ L5:
+  goto L2;
+ L1:
+  return 0;
+}
+</pre>
+<pre style="font-family:Times New Roman, Times, serif;">
+	"My God!", Bossman says, "I haven't seen code like that since before you were born. I remember one time
+	I had to maintain a program written in machine code. I made a big flowchart to help me figure out what was going on,
+	maybe you should try the same thing. Well, anyway, I've got to go see if I can convince Paul not to kill himself.
+	Good luck with the debugging!"
+</pre>
+<h3>Instructions</h3>
+<pre style="font-family:Times New Roman, Times, serif;">
+Although it's not necessary, building a program flowchart would probably be beneficial to understand the code
+in this problem. To learn how to make a flowchart, read the <a href="/tools">Dia</a> lesson on the tools page.
+
+As an example of how this program should work, consider the following inputs:
+2a
+4a1b
+1234
+4 1a
+
+These should produce the following outputs:
+aa
+aaaab
+2444
+    a
+
+In each digit/character pair, the number specifies how many times the character is
+repeated. You do not have to worry about what happens when a character is sent before
+a letter, for example in the input "a2". In this case the behavior is undefined and the
+problem-checking script will not test this.
+
+When you submit this problem, submit the main function.
+</pre>

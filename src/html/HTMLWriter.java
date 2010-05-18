@@ -41,6 +41,7 @@ public class HTMLWriter {
 				"<head>\n" +
 				"<meta http-equiv=\"Content-type\" content=\"text/html;charset=UTF-8\" />" +
 				"<title>" + titleText + "</title>\n" +
+				"<link rel=\"stylesheet\" type=\"text/css\" href=\"static/main.css\" >" +
 				"</head>\n" +
 		"<body>");
 	}
@@ -81,9 +82,12 @@ public class HTMLWriter {
 	 */
 	public void writeHeader() throws IOException
 	{
+		resp.getWriter().println("<div class=\"gametitle\">" +
+				"<h1 class=\"gametitle\">Bug Killer</h1>");
 		//Unimplemented pages are commented out.
 		UserService us = UserServiceFactory.getUserService();
 		Redirector redir = new Redirector(req,resp);
+		resp.getWriter().println("<div class=\"menubar\">");
 		writeLink("home", "Home");
 		writeLink("problems", "Available Problems");
 		writeLink("tools", "Tools");
@@ -102,7 +106,7 @@ public class HTMLWriter {
 		{
 			writeLink(us.createLoginURL(req.getRequestURI()), "Log In");
 		}
-		writeRule();
+		resp.getWriter().println("</div></div>");
 	}
 
 	//Write a message explaining the GET method is unsupported for a page.

@@ -82,8 +82,11 @@ public class ViewProblemServlet extends HttpServlet {
 				{
 					resp.getWriter().println("Error: Could not open description file.");
 				}
+				resp.getWriter().println("<span class=\"button\">");
 				hw.writeLink( curProblem.getHelpURL() ,"View hints for this problem.");
+				resp.getWriter().println("</span>\n<span class=\"button\">");
 				hw.writeLink("submitform?pid=" + pid, "Submit your solution for this problem.");
+				resp.getWriter().println("</span>");
 				hw.writeEpilog();
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
