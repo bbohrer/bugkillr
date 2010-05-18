@@ -31,7 +31,7 @@ public class HomeServlet extends HttpServlet {
 				{
 					resp.getWriter().println("Welcome back, " + req.getUserPrincipal().getName() +"<br/>" +
 							"<p>Note: We're constantly updating things, so if something's broken, please ");
-					hw.writeLink("feedback", "tell us");
+					hw.writeLink("feedback", "give us feedback");
 					resp.getWriter().println(". Even if nothing's broken, feel free to tell us what you think.</p>" +
 							"<p> Don't know what to do? Read the ");
 					hw.writeLink("/gettingstarted", "getting started");

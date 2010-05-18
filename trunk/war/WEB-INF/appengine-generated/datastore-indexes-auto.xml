@@ -1,4 +1,11 @@
-<!-- Indices written at Mon, 17 May 2010 03:50:07 UTC -->
+<!-- Indices written at Tue, 18 May 2010 04:22:07 UTC -->
 
-<datastore-indexes/>
+<datastore-indexes>
 
+    <!-- Used 41 times in query history -->
+    <datastore-index kind="User" ancestor="false" source="auto">
+        <property name="teamId" direction="asc"/>
+        <property name="score" direction="desc"/>
+    </datastore-index>
+
+</datastore-indexes>

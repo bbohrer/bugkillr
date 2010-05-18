@@ -20,7 +20,7 @@ public class FeedbackServlet extends HttpServlet {
 		hw.writeLink("http://code.google.com/p/bugkillr/issues/entry", "bug tracker.");
 		resp.getWriter().println("<br/> For general comments, you can ");
 		hw.writeLink("mailto:bjb322@drexel.edu?subject=Bug%20Killer%20Feedback", "send us an email.");
-		resp.getWriter().println("<p>Also, you can tell us what you think through ");
+		resp.getWriter().println("<p>Also, please fill out ");
 		hw.writeLink("http://spreadsheets.google.com/viewform?hl=en&formkey=dGJQVnRuUDJBRlc1Q1dKdEw0czM2ZlE6MQ", "this survey.");
 		resp.getWriter().println("</p>");
 		hw.writeEpilog();
