@@ -1,69 +1,105 @@
 /*I don't know jack about graphic design. Please make my stuff prettier! - Randy*/
+body {
+	background-color: #FFDBA3;
+}
+
 span.button {
 	margin: 10px 7px 10px 7px;
-	width:200px;
-border: 1px solid aqua;
-background-color: aquamarine;
-border-radius: 4px;
-box-shadow: inset 1px 6px 12px lightblue, inset -1px -10px 5px aqua, 1px 2px 1px black;
--o-box-shadow: inset 1px 6px 12px lightblue, inset -1px -10px 5px aqua, 1px 2px 1px black;
--webkit-box-shadow: inset 1px 6px 12px lightblue, inset -1px -10px 5px aqua, 1px 2px 1px black;
--moz-box-shadow: inset 1px 6px 12px lightblue, inset -1px -10px 5px aqua, 1px 2px 1px black;
-color: white;
-text-shadow: 1px 1px 1px black;
-padding: 5px 30px;
+	width: 200px;
+	border: 1px solid #E8571D;
+	background-color: #E8571D;
+	border-width: 2px;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	box-shadow: inset 1px 6px 12px #FF7E35, inset -1px -10px 5px #E8571D, 1px
+		2px 1px black;
+	-o-box-shadow: inset 1px 6px 12px #FF7E35, inset -1px -10px 5px #E8571D,
+		1px 2px 1px black;
+	-webkit-box-shadow: inset 1px 6px 12px #FF7E35, inset -1px -10px 5px
+		#E8571D, 1px 2px 1px black;
+	-moz-box-shadow: inset 1px 6px 12px #FF7E35, inset -1px -10px 5px #E8571D,
+		1px 2px 1px black;
+	color: white;
+	text-shadow: 1px 1px 1px black;
+	padding: 4px 17px;
 }
-span.button a {text-decoration:none;}
-div.gametitle
-{
+
+span.button a {
+	text-decoration: none;
+	color:#000000;
+	font-family:Helvetica,Arial,sans-serif;
+	font-size:0.8em;
+}
+
+div.gametitle {
 	padding-top: 15px;
 	font-family: Helvetica, Arial, sans-serif;
-	text-align:center;
-	background-color:#C2FFCC;
-  	 box-shadow: 0 1px 5px #0061aa, inset 0 10px 20px #C2FFCC;
-   	-o-box-shadow: 0 1px 5px #0061aa, inset 0 10px 10px 20px #C2FFCC;
-   	-webkit-box-shadow: 0 1px 5px #0061aa, inset 0 10px 20px #C2FFCC;
-   	-moz-box-shadow: 0 1px 5px #0061aa, inset 0 10px 20px #C2FFCC;
-   border-radius: 10px 10px 10px 10px;
+	text-align: center;
+	background-color: #E8571D;
+	box-shadow: 0 1px 5px #000000, inset 0 10px 20px #FF7E35;
+	-o-box-shadow: 0 1px 5px #000000, inset 0 10px 10px 20px #FF7E35;
+	-webkit-box-shadow: 0 1px 5px #000000, inset 0 10px 20px #FF7E35;
+	-moz-box-shadow: 0 1px 5px #000000, inset 0 10px 20px #FF7E35;
+	border-radius: 10px 10px 10px 10px;
+	-moz-border-radius: 10px 10px 10px 10px;
+	-webkit-border-radius: 10px 10px 10px 10px;
 }
-.menubar
-{
-	background-color:aquamarine;
-   box-shadow: 0 1px 5px #0061aa, inset 0 10px 20px #b6f9ff;
-   -o-box-shadow: 0 1px 5px #0061aa, inset 0 10px 20px #b6f9ff;
-   -webkit-box-shadow: 0 1px 5px #0061aa, inset 0 10px 20px #b6f9ff;
-   -moz-box-shadow: 0 1px 5px #0061aa, inset 0 10px 20px #b6f9ff;
-   padding: 6px 6px 6px 6px;
-   border-radius: 0 0 10px 10px ;
+
+.menubar {
+	background-color: #FF842B;
+	box-shadow: 0 1px 5px #000000, inset 0 10px 20px #E8571D;
+	-o-box-shadow: 0 1px 5px #0000000, inset 0 10px 20px #E8571D;
+	-webkit-box-shadow: 0 1px 5px #000000, inset 0 10px 20px #E8571D;
+	-moz-box-shadow: 0 1px 5px #000000, inset 0 10px 20px #E8571D;
+	padding: 6px 6px 6px 6px;
+	border-radius: 0 0 10px 10px;
+	-moz-border-radius: 0 0 10px 10px;
+	-webkit-border-radius: 0 0 10px 10px;
 }
-h1.gametitle
-{	
+
+h1 {
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+h1.gametitle {
 	font-size: 3em;
 }
-hr
-{
-	color:aqua;
-	background-color:aqua;
+
+hr {
+	color: aqua;
+	background-color: aqua;
 	border: 0px;
 	height: 2px;
 	margin: 4px 4px 4px 4px;
 }
-a{margin: 2px 2px 2px 2px;}
-td, tr, table
-{
-	border-collapse:collapse;
+
+a {
+	margin: 2px 2px 2px 2px;
+}
+
+td,tr,table {
+	border-collapse: collapse;
 	border: 1px;
 	border-style: solid;
-	border-color: aqua;
-	background-color:#C2FFCC;
+	border-color: #E8571D;
 	padding: 2px 6px 2px 6px;
 }
-th
-{
+
+tr.odd {
+	background-color: #FFD596;
+}
+
+tr.even {
+	background-color: #F7B77C;
+}
+
+th {
 	font-family: Helvetica, Arial, sans-serif;
 	padding: 2px 15px 2px 15px;
+	background-color: #FF7E35;
 }
-table
-{
+
+table {
 	margin: 10px 10px 10px 10px;
 }

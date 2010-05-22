@@ -39,9 +39,9 @@ public class HTMLWriter {
 				"\"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n" +
 				"<html xmlns=\"http://www.w3.org/1999/xhtml\">\n" +
 				"<head>\n" +
-				"<meta http-equiv=\"Content-type\" content=\"text/html;charset=UTF-8\" />" +
+				"<meta http-equiv=\"Content-type\" content=\"text/html;charset=iso-8859-1\" />" +
 				"<title>" + titleText + "</title>\n" +
-				"<link rel=\"stylesheet\" type=\"text/css\" href=\"static/main.css\" >" +
+				"<link rel=\"stylesheet\" type=\"text/css\" href=\"static/main.css\" />" +
 				"</head>\n" +
 		"<body>");
 	}
@@ -84,7 +84,6 @@ public class HTMLWriter {
 	{
 		resp.getWriter().println("<div class=\"gametitle\">" +
 				"<h1 class=\"gametitle\">Bug Killer</h1>");
-		//Unimplemented pages are commented out.
 		UserService us = UserServiceFactory.getUserService();
 		Redirector redir = new Redirector(req,resp);
 		resp.getWriter().println("<div class=\"menubar\">");

@@ -47,11 +47,12 @@ public class ViewAvailableProblemsServlet extends HttpServlet {
 			List<Long> junctions = (List<Long>) getJunctions.execute(curUser.getKey());
 			Set<Long> pidSet = new HashSet<Long>(junctions);
 			resp.getWriter().println("<table>" +
-					"<th>Problem Name</th><th>Solved</th>");
+					"<th>Problem Name</th><th>Status</th>");
+			int curRow = 1;
 			for(Problem p : unsolvedProblems)
 			{
-				
-				resp.getWriter().println("<tr><td>");
+				String trClass = (curRow++%2==0)?"even":"odd";
+				resp.getWriter().println("<tr class =\"" +trClass+"\"><td>");
 				hw.writeLink("viewproblem?pid=" + p.getKey(), p.getName());
 				resp.getWriter().println("</td><td>");
 				resp.getWriter().println(pidSet.contains(p.getKey())? "Solved":"Unsolved");
