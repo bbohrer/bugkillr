@@ -65,7 +65,7 @@ public class ViewProblemServlet extends HttpServlet {
 
 				List<UserProblemJunction> junct = (List<UserProblemJunction>) getJunction.execute(redir.getUserFromDatastore().getKey(),pid);
 
-				resp.getWriter().println("<h2>Problem Name: "+ curProblem.getName()+ (junct.isEmpty()?" (Unsolved)":" (Solved)")+"</h2>");
+				resp.getWriter().println("<h2>"+ curProblem.getName()+ (junct.isEmpty()?" (Unsolved)":" (Solved)")+"</h2>");
 				resp.getWriter().println("<h3>Current Score: " + curUser.getScore() + "</h3>");
 
 				URL url = new URL(curProblem.getDescriptionURL());

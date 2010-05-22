@@ -79,7 +79,8 @@ public class ViewTeamStatisticsDetailServlet extends HttpServlet  {
 			response.getWriter().println("<table>" +
 			"<tr><th>Name</th><th>Score</th><th>Rank</th></tr>");
 			for( User u : results){
-				response.getWriter().println("<tr><td><a href=\"mailto:"+u.getAccountId() + "\">"+u.getAccountId() +"</a></td><td>"+ u.getScore()+"</td><td>"+ rank++ + "</td></tr>");
+				String trClass = (rank%2==0)?"even":"odd";
+				response.getWriter().println("<tr class=\""+trClass+"\"><td><a href=\"mailto:"+u.getAccountId() + "\">"+u.getAccountId() +"</a></td><td>"+ u.getScore()+"</td><td>"+ rank++ + "</td></tr>");
 			}
 			response.getWriter().println("</table>");
 		}
