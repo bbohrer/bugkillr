@@ -1,69 +1,74 @@
 /*I don't know jack about graphic design. Please make my stuff prettier! - Randy*/
 body {
-	background-color: #FFDBA3;
+	background-color: #EEEEEE;
+	width: 80%;
+	max-width: 900px;
+	margin: 10px auto;
 }
 
-span.button {
-	margin: 10px 7px 10px 7px;
-	width: 200px;
-	border: 1px solid #E8571D;
-	background-color: #E8571D;
-	border-width: 2px;
-	border-radius: 4px;
-	-moz-border-radius: 4px;
-	-webkit-border-radius: 4px;
-	box-shadow: inset 1px 6px 12px #FF7E35, inset -1px -10px 5px #E8571D, 1px
-		2px 1px black;
-	-o-box-shadow: inset 1px 6px 12px #FF7E35, inset -1px -10px 5px #E8571D,
-		1px 2px 1px black;
-	-webkit-box-shadow: inset 1px 6px 12px #FF7E35, inset -1px -10px 5px
-		#E8571D, 1px 2px 1px black;
-	-moz-box-shadow: inset 1px 6px 12px #FF7E35, inset -1px -10px 5px #E8571D,
-		1px 2px 1px black;
-	color: white;
-	text-shadow: 1px 1px 1px black;
-	padding: 4px 17px;
-}
-
-span.button a {
-	text-decoration: none;
-	color:#000000;
-	font-family:Helvetica,Arial,sans-serif;
-	font-size:0.8em;
+.logo {
+	background-image: url(bugkiller.png);
+	margin: 40px 0px 40px 40px;
+	width: 301px;
+	height: 51px;
 }
 
 div.gametitle {
-	padding-top: 15px;
+	padding: 1px 0px;
 	font-family: Helvetica, Arial, sans-serif;
 	text-align: center;
-	background-color: #E8571D;
-	box-shadow: 0 1px 5px #000000, inset 0 10px 20px #FF7E35;
-	-o-box-shadow: 0 1px 5px #000000, inset 0 10px 10px 20px #FF7E35;
-	-webkit-box-shadow: 0 1px 5px #000000, inset 0 10px 20px #FF7E35;
-	-moz-box-shadow: 0 1px 5px #000000, inset 0 10px 20px #FF7E35;
-	border-radius: 10px 10px 10px 10px;
-	-moz-border-radius: 10px 10px 10px 10px;
-	-webkit-border-radius: 10px 10px 10px 10px;
+	background-color: #D0D0D0;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
 }
 
 .menubar {
 	background-color: #FF842B;
-	box-shadow: 0 1px 5px #000000, inset 0 10px 20px #E8571D;
-	-o-box-shadow: 0 1px 5px #0000000, inset 0 10px 20px #E8571D;
-	-webkit-box-shadow: 0 1px 5px #000000, inset 0 10px 20px #E8571D;
-	-moz-box-shadow: 0 1px 5px #000000, inset 0 10px 20px #E8571D;
-	padding: 6px 6px 6px 6px;
+	color: #000000; 
 	border-radius: 0 0 10px 10px;
 	-moz-border-radius: 0 0 10px 10px;
 	-webkit-border-radius: 0 0 10px 10px;
+	height: 30px;
+}
+
+.menubar a:link, .menubar a:hover, .menubar a:visited, 
+.menucontainer a:link, .menucontainer a:hover, .menucontainer a:visited {
+	font-family: Verdana;
+	font-size: 90%;
+	margin: 6px 10px;
+	border-bottom: medium none;
+	color: inherit;
+	text-decoration: none;
+}
+
+.menubar li {
+	background-color: #FF842B;
+	border-radius: 2px;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	color: #000000;
+	margin: 3px 3px;
+	padding: 2px;
+	float: left;
+	border: none;
+	list-style: none;
+}
+
+.menubar li:hover {
+	background-color: #D0D0D0;
+	color: #FF842B;
+}
+
+.content {
+	padding: 30px 20px;
+	font-family: Arial, Verdana, Helvetica;
+	font-size: 0.8em;
 }
 
 h1 {
-	font-family: Helvetica, Arial, sans-serif;
-}
-
-h1.gametitle {
-	font-size: 3em;
+	font-family: Verdana, Helvetica, Arial, sans-serif;
+	font-size: 1.4em;
 }
 
 hr {
@@ -102,4 +107,33 @@ th {
 
 table {
 	margin: 10px 10px 10px 10px;
+}
+
+span.button {
+	margin: 10px 7px 10px 7px;
+	width: 200px;
+	border: 1px solid #E8571D;
+	background-color: #E8571D;
+	border-width: 2px;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	box-shadow: inset 1px 6px 12px #FF7E35, inset -1px -10px 5px #E8571D, 1px
+		2px 1px black;
+	-o-box-shadow: inset 1px 6px 12px #FF7E35, inset -1px -10px 5px #E8571D,
+		1px 2px 1px black;
+	-webkit-box-shadow: inset 1px 6px 12px #FF7E35, inset -1px -10px 5px
+		#E8571D, 1px 2px 1px black;
+	-moz-box-shadow: inset 1px 6px 12px #FF7E35, inset -1px -10px 5px #E8571D,
+		1px 2px 1px black;
+	color: white;
+	text-shadow: 1px 1px 1px black;
+	padding: 4px 17px;
+}
+
+span.button a {
+	text-decoration: none;
+	color:#000000;
+	font-family:Helvetica,Arial,sans-serif;
+	font-size:0.8em;
 }

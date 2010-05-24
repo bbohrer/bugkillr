@@ -9,6 +9,9 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 import javax.servlet.http.*;
 
+import com.google.appengine.api.users.UserService;
+import com.google.appengine.api.users.UserServiceFactory;
+
 import html.HTMLWriter;
 import redirects.Redirector;
 import bugkillr.PMF;
@@ -132,9 +135,13 @@ public class DBProcessSubmissionServlet extends HttpServlet {
 							{
 								resp.getWriter().println(line);
 							}
-							resp.getWriter().println("Debugging information: <br/>");
-							resp.getWriter().println("First line = " + firstLine + "<br/>");
-							resp.getWriter().println("Solver URL = " + solverURL + "<br/>");
+
+							UserService us = UserServiceFactory.getUserService();
+							if(us.isUserAdmin()){
+								resp.getWriter().println("Debugging information: <br/>");
+								resp.getWriter().println("First line = " + firstLine + "<br/>");
+								resp.getWriter().println("Solver URL = " + solverURL + "<br/>");
+							}
 						}
 					} else {
 						resp.getWriter().println("An error occurred in the problem solver, HTTP Response code = " + connection.getResponseCode());
