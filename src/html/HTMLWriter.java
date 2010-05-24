@@ -97,9 +97,6 @@ public class HTMLWriter {
 		writeLink("addteamform", "Create New Team");
 		writeLink("viewteams", "Join a Different Team");
 		
-		if(us.isUserLoggedIn() && us.isUserAdmin()){
-			writeLink("addproblemform","Create New Problem");
-		}
 		//Use Google Apps API to generate login/logout links.
 		if(redir.isLoggedIn())
 		{
@@ -108,6 +105,9 @@ public class HTMLWriter {
 		else
 		{
 			writeLink(us.createLoginURL(req.getRequestURI()), "Log In");
+		}
+		if(us.isUserLoggedIn() && us.isUserAdmin()){
+			writeLink("addproblemform","Create New Problem");
 		}
 		resp.getWriter().println("</div></div>\n<div class=\"content\"");
 	}
