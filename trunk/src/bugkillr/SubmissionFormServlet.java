@@ -44,7 +44,7 @@ public class SubmissionFormServlet extends HttpServlet {
 		resp.getWriter().println("Copy and paste your source code into the area below.<br/>\n");
 		//Submission form
 		resp.getWriter().println("<form name=\"input\" action=\"DBprocess_submission\" method=\"post\" >\n" +
-				"<textarea name=\"inputText\" rows=\"25\" cols=\"120\">Test Text</textarea>\n" +
+				"<textarea name=\"inputText\" rows=\"25\" cols=\"120\">Paste code here.</textarea>\n" +
 				"<input type=\"hidden\" name=\"pid\" value=\""+req.getParameter("pid")+"\"/><br/>\n" +
 				"<input type=\"submit\" value=\"Submit\"/>\n" +
 				"</form>");
