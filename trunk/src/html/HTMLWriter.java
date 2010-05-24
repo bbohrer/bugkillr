@@ -39,9 +39,11 @@ public class HTMLWriter {
 				"\"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n" +
 				"<html xmlns=\"http://www.w3.org/1999/xhtml\">\n" +
 				"<head>\n" +
-				"<meta http-equiv=\"Content-type\" content=\"text/html;charset=iso-8859-1\" />" +
+				"<meta http-equiv=\"Content-type\" content=\"text/html;charset=UTF-8\" />" +
 				"<title>" + titleText + "</title>\n" +
-				"<link rel=\"stylesheet\" type=\"text/css\" href=\"static/main.css\" />" +
+				"<link rel=\"stylesheet\" type=\"text/css\" href=\"static/main.css\"\n>" +
+				"<script type=\"text/javascript\" src=\"http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js\"></script>\n" +
+				"<script type=\"text/javascript\" src=\"static/script.js\"></script>\n" +
 				"</head>\n" +
 		"<body>");
 	}
@@ -51,7 +53,7 @@ public class HTMLWriter {
 	 */
 	public void writeEpilog() throws IOException
 	{
-		resp.getWriter().println("</body>\n" +
+		resp.getWriter().println("</div></body>\n" +
 		"</html>");
 	}
 
@@ -83,7 +85,8 @@ public class HTMLWriter {
 	public void writeHeader() throws IOException
 	{
 		resp.getWriter().println("<div class=\"gametitle\">" +
-				"<h1 class=\"gametitle\">Bug Killer</h1>");
+				"<div class=\"logo\">&nbsp;</div>");
+		//Unimplemented pages are commented out.
 		UserService us = UserServiceFactory.getUserService();
 		Redirector redir = new Redirector(req,resp);
 		resp.getWriter().println("<div class=\"menubar\">");
@@ -93,6 +96,7 @@ public class HTMLWriter {
 		writeLink("highscores", "Team Rankings");
 		writeLink("addteamform", "Create New Team");
 		writeLink("viewteams", "Join a Different Team");
+		
 		if(us.isUserLoggedIn() && us.isUserAdmin()){
 			writeLink("addproblemform","Create New Problem");
 		}
@@ -105,7 +109,7 @@ public class HTMLWriter {
 		{
 			writeLink(us.createLoginURL(req.getRequestURI()), "Log In");
 		}
-		resp.getWriter().println("</div></div>");
+		resp.getWriter().println("</div></div>\n<div class=\"content\"");
 	}
 
 	//Write a message explaining the GET method is unsupported for a page.

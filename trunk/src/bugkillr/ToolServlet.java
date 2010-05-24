@@ -1,19 +1,16 @@
 package bugkillr;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 import javax.servlet.http.*;
 
 import html.HTMLWriter;
 
 /**
- * @author Randy Bohrer
- * This is a template to base your servlets off of. It contains two functions, doGet and doPost.
- * The difference between GET and POST is that when a GET page has a parameter, its value is
- * passed through the URL, and when a POST page has a parameter, it's passed separately in
- * the HTTP request. POST can handle more data, so for pages with more than a few parameters,
- * use POST. Also, use POST for pages that may have sensitive data in the parameters, because
- * using GET makes this information very easy to change. For static pages or pages with a few
- * parameters, use GET. If you really want, it is also possible to use both.
+ * @author Duc Anh Nguyen
  */
 @SuppressWarnings("serial")
 public class ToolServlet extends HttpServlet {
@@ -33,9 +30,25 @@ public class ToolServlet extends HttpServlet {
 		/*This inserts the program's menu bar. Please use this function instead of
 		 * making the menu yourself so if/when the menu changes, it will automatically update everywhere.*/
 		hw.writeHeader();
-		resp.getWriter().println("<iframe frameborder='0' src ='../static/toolpage/tools.html' width='100%' height='90%'>");
+		/*resp.getWriter().println("<iframe frameborder='0' src ='../static/toolpage/tools.html' width='100%' height='90%'>");
 		resp.getWriter().println(" <p>Your browser does not support iframes.</p>");
-		resp.getWriter().println(" </iframe>");
+		resp.getWriter().println(" </iframe>");*/
+		try {
+			URL url = new URL("http://bugkillr.appspot.com/static/toolpage/tools.html");
+            BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                resp.getWriter().println(line);
+            }
+            reader.close();
+		} catch (MalformedURLException e) {
+			resp.getWriter().println("Can't fetch the tool page due to malformed URL");
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 		/*Write out the end of the HTML file. At the moment this is just a pair of closing tags for <body>
 		 * and <html>, but it looks nicer than manually writing out the ending tags.*/
 		hw.writeEpilog();

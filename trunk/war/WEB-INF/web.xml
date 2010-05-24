@@ -167,4 +167,14 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	<welcome-file-list>
 		<welcome-file>home</welcome-file>
 	</welcome-file-list>
+    <security-constraint>
+    
+       <web-resource-collection>
+       <web-resource-name>Add Problem Form</web-resource-name>
+           <url-pattern>/addproblemform</url-pattern>
+       </web-resource-collection>
+       <auth-constraint>
+           <role-name>admin</role-name>
+       </auth-constraint>
+   </security-constraint>
 </web-app>
